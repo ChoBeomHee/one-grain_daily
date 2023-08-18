@@ -12,20 +12,31 @@ struct ContentView : View {
     TabView {
         CalendarView()
         .tabItem {
-          Image(systemName: "1.square.fill")
-          Text("First")
+          Image(systemName: "calendar")
+          Text("일기")//달력
         }
       Text("Another Tab")
         .tabItem {
-          Image(systemName: "2.square.fill")
-          Text("Second")
+          Image(systemName: "basket.fill")
+          Text("바구니") //바구니
         }
       Text("The Last Tab")
         .tabItem {
-          Image(systemName: "3.square.fill")
-          Text("Third")
+          Image(systemName: "plus")
         }
         .badge(10)
+        Text("The Last Tab")
+          .tabItem {
+            Image(systemName: "4.square.fill")
+            Text("Spoon")
+          }
+          
+        Text("The Last Tab")
+          .tabItem {
+            Image(systemName: "gearshape.circle.fill")
+            Text("Setting") //환경설정
+          }
+          
     }
     .font(.headline)
   }
