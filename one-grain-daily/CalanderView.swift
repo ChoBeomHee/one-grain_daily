@@ -10,16 +10,27 @@ import SwiftUI
 struct CalendarView: View {
 
     @State private var date = Date()
+    @State private var donate = 200
+    @State private var have = 29
 
 
     var body: some View {
-        DatePicker(
-            "Start Date",
-            selection: $date,
-            displayedComponents: [.date]
-        )
-        .datePickerStyle(.graphical)
+        
+        VStack{
+            DatePicker(
+                "Start Date",
+                selection: $date,
+                displayedComponents: [.date]
+            )
+            .datePickerStyle(.graphical)
+            Spacer().frame(height: 50)
+            VStack{
+                Text("기부한 쌀 : \(donate), 보유 쌀: \(have)")
+            }
+        }
+        
     }
+    
 }
 
 

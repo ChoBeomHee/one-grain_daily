@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView : View {
   var body: some View {
     TabView {
-      Text("The First Tab")
+        CalendarView()
         .tabItem {
           Image(systemName: "1.square.fill")
           Text("First")
