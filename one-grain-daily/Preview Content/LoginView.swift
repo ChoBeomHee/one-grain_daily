@@ -6,105 +6,113 @@
 //
 
 
-
 import SwiftUI
 
 struct LoginView: View {
     
-    @State private var email: String = ""
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State private var showingAlert = false
+    @State var uiTabarController: UITabBarController?
+    @State private var username: String = ""
     @State private var password: String = ""
-    @State private var loginStatus: Bool = false // TODO env 변수로 선언 후 토큰 계속 확인
-    @State private var userAccessToken: String = ""
+    @State private var nickname: String = ""
+
     
+
+    var btnBack : some View { Button(action: {
+        self.showingAlert = true
+    }){
+        Text("뒤로가기")
+    }.alert(isPresented: $showingAlert){
+        Alert(title: Text("회원 가입 취소"), message: Text("회원가입을 취소하시겠습니까?"),
+              primaryButton: .destructive(Text("취소하기"), action: {
+            presentationMode.wrappedValue.dismiss()
+        })
+              , secondaryButton: .cancel(Text("이어하기")))
+    }
+        
+    }
     
     var body: some View {
-        
-        NavigationView{
-            if self.loginStatus != false {
-//                ProfileDetail(userEmail: self.email, userAccessToken: self.userAccessToken)
-            } else {
-                VStack{
-                    Text("하루 한 톨")
-                        .font(.title)
-                        .fontWeight(.heavy)
-                        .padding().frame(height:100)
-                        .foregroundColor(.black)
-                    HStack{
-                        
-                        TextField("ID를 입력하세요.", text: $email)
-                            .frame(width: 300, height: 20)
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(5.0)
-                            .padding(.bottom, 20)
+        VStack{
+            Text("로그인")
+                .font(.title)
+                .fontWeight(.heavy)
+                .padding().frame(height:100)
+                .foregroundColor(.black)
+            HStack{
+                Spacer().frame(width: 20)
+                Image(systemName: "person.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .padding(.bottom)
+                
+                TextField("아이디를 입력하세요.", text: $username)
+                    .frame(width: 270, height: 10)
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(5.0)
+                    .padding(.bottom, 20)
+                Spacer().frame(width: 20)
+            }
                             
-                    }
-                    HStack{
-                            
-                        SecureField("비밀번호를 입력하세요", text: $password)
-                            .frame(width: 300, height: 20)
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(5.0)
-                            .padding(.bottom, 20)
-                    }
+            HStack{
+                Spacer().frame(width: 20)
+                Image(systemName: "lock")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .padding(.bottom)
                     
-                    HStack{
-                        Button(action: {
-//                            print(self.email + self.password)
-//
-//                            let rft = readItemKeyChain(userId: self.email)
-//                            if rft != nil {
-//                                UserDefaults.standard.set(rft, forKey: self.email)
-//                            }else{
-//                                sendPostRequest("<http://localhost:8000/auth/login>", parameters: ["username": self.email, "password": self.password]){
-//                                    responseObject, error in guard let _ = responseObject, error == nil else {
-//                                        print(error ?? "Unknown error")
-//                                        return
-//                                    }
-//                                    self.loginStatus = true
-//
-//                                    if let rftToken = responseObject{
-//                                        let rft = rftToken["refresh"] as? String
-//                                        self.userAccessToken = rftToken["access"] as? String ?? ""
-//                                        setItemKeyChain(userId: self.email, rft: rft!)
-//                                        UserDefaults.standard.set(rft, forKey: self.email)
-//                                    }
-//                                }
-//                            }
-                        }){
-                            NavigationLink(destination: ContentView()){
-                                Text("로그인")
-                                    .frame(width: 100, height: 20)
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .background(Color(.systemBlue))
-                                    .cornerRadius(5)
-                            }
-                                
-                        }
-                        .padding()
-                        
-                        NavigationLink(destination: SignUpView()){
-                            Text("회원가입")
-                                .frame(width: 100, height: 20)
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Color(.systemBlue))
-                                .cornerRadius(5)
-                        }
-                        
-                        
+                SecureField("비밀번호를 입력하세요", text: $password)
+                    .frame(width: 270, height: 10)
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(5.0)
+                    .padding(.bottom, 20)
+                Spacer().frame(width: 20)
+            }
+            
+            Button(action: {
+                print(self.username + self.password + self.nickname)
+
+                sendPostRequest("http://115.85.183.243:8080/login", parameters: ["username": self.username, "password": self.password]) { responseObject, error in
+                    if let responseObject = responseObject {
+                        // 서버 응답을 이용한 원하는 작업 수행
+                        print("서버 응답:", responseObject)
+                    } else if let error = error {
+                        // 오류 처리
+                        print("오류:", error)
+                    } else {
+                        // 그 외의 예외 상황 처리
+                        print("알 수 없는 오류")
                     }
-                    
                 }
-                .padding(.all, 30)
-                .navigationBarTitle("", displayMode: .inline)
-                .navigationBarHidden(true)
+                // Example usage
+                loginAndFetchHeaders(username: self.username, password: self.password)
+
+                self.presentationMode.wrappedValue.dismiss()
+                
+                
+            }){
+                Text("로그인")
+                    .frame(width: 80, height: 10)
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color(.systemBlue))
+                    .cornerRadius(10)
+                    
+            }
+            .padding()
+            .onSubmit {
+                
             }
         }
+        .padding(.all, 30)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: btnBack)
     }
 }
 

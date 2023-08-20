@@ -11,11 +11,11 @@ struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var showingAlert = false
     @State var uiTabarController: UITabBarController?
-    
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var rePassword: String = ""
     @State private var username: String = ""
+    @State private var password: String = ""
+    @State private var nickname: String = ""
+
+    
 
     var btnBack : some View { Button(action: {
         self.showingAlert = true
@@ -38,24 +38,6 @@ struct SignUpView: View {
                 .fontWeight(.heavy)
                 .padding().frame(height:100)
                 .foregroundColor(.black)
-            
-            HStack{
-                Spacer().frame(width: 20)
-                Image(systemName: "tag")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-                    .padding(.bottom)
-                
-                TextField("닉네임을 입력하세요", text: $username)
-                    .frame(width: 270, height: 10)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(5.0)
-                    .padding(.bottom, 20)
-                Spacer().frame(width: 20)
-                    
-            }
             HStack{
                 Spacer().frame(width: 20)
                 Image(systemName: "person.fill")
@@ -64,13 +46,30 @@ struct SignUpView: View {
                     .frame(width: 20, height: 20)
                     .padding(.bottom)
                 
-                TextField("이메일을 입력하세요.", text: $email)
+                TextField("아이디를 입력하세요.", text: $username)
                     .frame(width: 270, height: 10)
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(5.0)
                     .padding(.bottom, 20)
+                Spacer().frame(width: 20)
+            }
+                            
+
+            HStack{
+                Spacer().frame(width: 20)
+                Image(systemName: "tag")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .padding(.bottom)
                 
+                TextField("닉네임을 입력하세요", text: $nickname)
+                    .frame(width: 270, height: 10)
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(5.0)
+                    .padding(.bottom, 20)
                 Spacer().frame(width: 20)
                     
             }
@@ -90,37 +89,19 @@ struct SignUpView: View {
                     .padding(.bottom, 20)
                 Spacer().frame(width: 20)
             }
-            HStack{
-                Spacer().frame(width: 20)
-                Image(systemName: "lock.rotation")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-                    .padding(.bottom)
-                Spacer().frame(width: 15)
-                
-                    
-                SecureField("비밀번호를 다시 입력하세요", text: $rePassword)
-                    .frame(width: 270, height: 10)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(5.0)
-                    .padding(.bottom, 20)
-                Spacer().frame(width: 20)
-            }
             
             Button(action: {
-//                print(self.email + self.password + self.rePassword + String(self.mbtiPicker[self.mbti])+self.username)
-//
-//                sendPostRequest("<http://localhost:8000/auth/signup>", parameters:
-//                                ["email": self.email, "username": self.username, "password": self.password, "mbti": self.mbtiPicker[self.mbti]]
-//                                 ){
-//                    responseObject, error in guard let _ = responseObject, error == nil else {
-//                        print(error ?? "Unknown error")
-//                        return
-//                    }
-//                }
-//                self.presentationMode.wrappedValue.dismiss()
+                print(self.username + self.password + self.nickname)
+
+                sendPostRequest("http://115.85.183.243:8080/join", parameters:
+                                ["username": self.username, "password": self.password, "nickname": self.nickname]
+                                 ){
+                    responseObject, error in guard let _ = responseObject, error == nil else {
+                        print(error ?? "Unknown error")
+                        return
+                    }
+                }
+                self.presentationMode.wrappedValue.dismiss()
             }){
                 Text("회원가입")
                     .frame(width: 80, height: 10)
