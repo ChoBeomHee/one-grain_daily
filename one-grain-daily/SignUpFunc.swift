@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 func sendPostRequest(_ url: String, parameters: [String: String], completion: @escaping ([String: Any]?, Error?) -> Void) {
     let targetUrl = URL(string: url)
