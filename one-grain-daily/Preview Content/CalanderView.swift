@@ -47,7 +47,6 @@ struct CalendarView: View {
                 saveMemo()
             }
             
-            Text("메모 목록:")
             List(filteredMemos) { memo in
                 Text("\(memo.date, formatter: dateFormatter): \(memo.text)")
             }

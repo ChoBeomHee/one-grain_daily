@@ -1,21 +1,14 @@
-//
-//  DiaryView.swift
-//  one-grain-daily
-//
-//  Created by 김주현 on 2023/08/20.
-//
-// 일기쓰기 화면
-
 import SwiftUI
 
 struct DiaryView: View {
     // 상태 변수 선언
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var title: String = ""
     @State private var selectedEmotion: String = "😊"
     @State private var diaryContent: String = ""
     
     // 이모티콘 목록
-    let emotions = ["😊", "😢", "😡", "😄", "😍", "😴", "😎", "😳"]
+    let emotions = ["😄", "😢", "😡", "😍", "😴"]
     
     var body: some View {
         NavigationView {
@@ -34,20 +27,28 @@ struct DiaryView: View {
                     .pickerStyle(SegmentedPickerStyle())
                 }
                 
-                Section(header: Text("일기 쓰기")) {
+                Section(header: Text("일기 내용")) {
                     TextEditor(text: $diaryContent)
                         .frame(height: 200)
                 }
+                
             }
             .navigationBarTitle("일기 작성")
-            .navigationBarItems(trailing:
-                Button(action: {
+            .navigationBarItems(
+                leading: Button(action: {
+                    // 취소 버튼 눌렀을 때 수행할 작업 = 뒤로가기
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("취소")
+                },
+                trailing: Button(action: {
                     // 일기 저장 또는 다른 작업을 수행할 수 있음
                     saveDiary()
                 }) {
                     Text("저장")
                 }
             )
+            
         }
     }
     
