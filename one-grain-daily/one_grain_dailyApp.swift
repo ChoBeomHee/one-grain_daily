@@ -11,7 +11,7 @@ import SwiftUI
 struct one_grain_dailyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
     }
 }

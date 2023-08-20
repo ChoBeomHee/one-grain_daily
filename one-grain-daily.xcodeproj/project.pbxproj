@@ -19,6 +19,7 @@
 		99A57F7A2A91D72F00BECC0B /* BasketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A57F792A91D72F00BECC0B /* BasketView.swift */; };
 		99A57F7E2A91D98900BECC0B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A57F7D2A91D98900BECC0B /* LoginView.swift */; };
 		99A57F802A91D9C300BECC0B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A57F7F2A91D9C300BECC0B /* SignUpView.swift */; };
+		99A57F822A91DFFD00BECC0B /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A57F812A91DFFD00BECC0B /* MypageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		99A57F792A91D72F00BECC0B /* BasketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketView.swift; sourceTree = "<group>"; };
 		99A57F7D2A91D98900BECC0B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		99A57F7F2A91D9C300BECC0B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		99A57F812A91DFFD00BECC0B /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				99A57F772A91D56A00BECC0B /* DiaryView.swift */,
 				99A57F792A91D72F00BECC0B /* BasketView.swift */,
 				99A57F7F2A91D9C300BECC0B /* SignUpView.swift */,
+				99A57F812A91DFFD00BECC0B /* MypageView.swift */,
 				99A57F522A8F87AE00BECC0B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99A57F7E2A91D98900BECC0B /* LoginView.swift in Sources */,
+				99A57F822A91DFFD00BECC0B /* MypageView.swift in Sources */,
 				99A57F7A2A91D72F00BECC0B /* BasketView.swift in Sources */,
 				99A57F762A8F8D1E00BECC0B /* CalanderView.swift in Sources */,
 				99A57F802A91D9C300BECC0B /* SignUpView.swift in Sources */,

@@ -9,7 +9,20 @@ import SwiftUI
 
 struct BasketView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        var rice:Int = 8000
+        
+        VStack{
+            Text("바구니")
+                .font(.title2)
+                .fontWeight(.heavy)
+            
+            Image("Rice")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            
+            Text("\(rice) / 10000")
+        }
+        
     }
 }
 
