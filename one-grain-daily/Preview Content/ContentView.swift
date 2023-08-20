@@ -27,14 +27,14 @@ struct ContentView : View {
         .badge(10)
         Text("The Last Tab")
           .tabItem {
-            Image(systemName: "4.square.fill")
+            Image(systemName: "cup.and.saucer.fill")
             Text("Spoon")
           }
           
         Text("The Last Tab")
           .tabItem {
             Image(systemName: "gearshape.circle.fill")
-            Text("Setting") //환경설정
+            Text("환경설정") //환경설정
           }
           
     }
