@@ -22,6 +22,7 @@
 		99A57F802A91D9C300BECC0B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A57F7F2A91D9C300BECC0B /* SignUpView.swift */; };
 		99A57F822A91DFFD00BECC0B /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A57F812A91DFFD00BECC0B /* MypageView.swift */; };
 		99A57FBA2A91E98600BECC0B /* SignUpFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A57FB92A91E98600BECC0B /* SignUpFunc.swift */; };
+		99A57FBC2A925E2200BECC0B /* MonthlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A57FBB2A925E2100BECC0B /* MonthlyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		99A57F7F2A91D9C300BECC0B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		99A57F812A91DFFD00BECC0B /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		99A57FB92A91E98600BECC0B /* SignUpFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFunc.swift; sourceTree = "<group>"; };
+		99A57FBB2A925E2100BECC0B /* MonthlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyView.swift; sourceTree = "<group>"; };
 		B1A334A86AB6CBC3F8FFD41B /* Pods-one-grain-daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-one-grain-daily.release.xcconfig"; path = "Target Support Files/Pods-one-grain-daily/Pods-one-grain-daily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +106,6 @@
 				53BE2E335C8F868ED524BB8D /* Pods-one-grain-daily.debug.xcconfig */,
 				B1A334A86AB6CBC3F8FFD41B /* Pods-one-grain-daily.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -144,6 +145,7 @@
 		99A57F512A8F87AE00BECC0B /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				99A57FBB2A925E2100BECC0B /* MonthlyView.swift */,
 				99A57F7D2A91D98900BECC0B /* LoginView.swift */,
 				99A57F4D2A8F87AD00BECC0B /* ContentView.swift */,
 				99A57F752A8F8D1E00BECC0B /* CalanderView.swift */,
@@ -351,6 +353,7 @@
 				99A57F7E2A91D98900BECC0B /* LoginView.swift in Sources */,
 				99A57F822A91DFFD00BECC0B /* MypageView.swift in Sources */,
 				99A57F7A2A91D72F00BECC0B /* BasketView.swift in Sources */,
+				99A57FBC2A925E2200BECC0B /* MonthlyView.swift in Sources */,
 				99A57F762A8F8D1E00BECC0B /* CalanderView.swift in Sources */,
 				99A57F802A91D9C300BECC0B /* SignUpView.swift in Sources */,
 				99A57F4E2A8F87AD00BECC0B /* ContentView.swift in Sources */,

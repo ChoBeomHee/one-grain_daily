@@ -13,22 +13,23 @@ struct ContentView : View {
         CalendarView()
         .tabItem {
           Image(systemName: "calendar")
-          Text("일기")//달력
+          Text("달력")//달력
         }
-      Text("Another Tab")
+        BasketView()
         .tabItem {
           Image(systemName: "basket.fill")
           Text("바구니") //바구니
         }
-      Text("The Last Tab")
+        DiaryView()
         .tabItem {
           Image(systemName: "plus")
+            Text("일기쓰기")
         }
         .badge(10)
-        Text("The Last Tab")
+        MonthlyView()
           .tabItem {
             Image(systemName: "cup.and.saucer.fill")
-            Text("Spoon")
+            Text("한 달 한 숟")
           }
           
         Text("The Last Tab")

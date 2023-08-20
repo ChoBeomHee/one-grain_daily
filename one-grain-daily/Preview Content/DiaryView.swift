@@ -4,8 +4,8 @@ struct DiaryView: View {
     // 상태 변수 선언
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var title: String = ""
-    @State private var selectedEmotion: String = "😊"
-    @State private var diaryContent: String = ""
+    @State private var emotional: String = "😊"
+    @State private var content: String = ""
     
     // 이모티콘 목록
     let emotions = ["😄", "😢", "😡", "😍", "😴"]
@@ -18,7 +18,7 @@ struct DiaryView: View {
                 }
                 
                 Section(header: Text("오늘의 감정")) {
-                    Picker("감정 선택", selection: $selectedEmotion) {
+                    Picker("감정 선택", selection: $emotional) {
                         ForEach(emotions, id: \.self) { emotion in
                             Text(emotion)
                                 .font(Font.system(size: 40))
@@ -28,7 +28,7 @@ struct DiaryView: View {
                 }
                 
                 Section(header: Text("일기 내용")) {
-                    TextEditor(text: $diaryContent)
+                    TextEditor(text: $content)
                         .frame(height: 200)
                 }
                 
@@ -56,8 +56,8 @@ struct DiaryView: View {
     func saveDiary() {
         // 여기에서 일기 저장 로직을 구현할 수 있음
         print("제목: \(title)")
-        print("감정: \(selectedEmotion)")
-        print("내용: \(diaryContent)")
+        print("감정: \(emotional)")
+        print("내용: \(content)")
         
         // 저장 후 필요한 작업 수행
     }
