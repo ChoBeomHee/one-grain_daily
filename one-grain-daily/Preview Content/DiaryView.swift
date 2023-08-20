@@ -6,6 +6,7 @@ struct DiaryView: View {
     @State private var title: String = ""
     @State private var emotional: String = "😊"
     @State private var content: String = ""
+    @State private var showAlert = false
     
     // 이모티콘 목록
     let emotions = ["😄", "😢", "😡", "😍", "😴"]
@@ -47,13 +48,23 @@ struct DiaryView: View {
                 }) {
                     Text("저장")
                 }
-            )
+            ).alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("일기가 저장되었습니다."),
+                    message: nil,
+                    dismissButton: .default(Text("확인")) {
+                        // 저장이 완료되면 경고창을 닫고 뒤로 가기
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                )
+            }
             
         }
     }
     
     // 일기를 저장하는 함수
     func saveDiary() {
+        showAlert = true //일기가 저장되었다는 알림을 띄워주기 위한 변수
         // 여기에서 일기 저장 로직을 구현할 수 있음
         print("제목: \(title)")
         print("감정: \(emotional)")
