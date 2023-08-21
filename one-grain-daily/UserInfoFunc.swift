@@ -47,6 +47,7 @@ func sendPostRequest(_ url: String, parameters: [String: String], completion: @e
     
 }
 
+//로그인 시 헤더 정보를 받아오는 함수
 func loginAndFetchHeaders(username: String, password: String) {
     let loginUrl = URL(string: "http://115.85.183.243:8080/login")!
 

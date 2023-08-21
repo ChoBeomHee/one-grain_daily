@@ -74,41 +74,66 @@ struct LoginView: View {
                 Spacer().frame(width: 20)
             }
             
-            Button(action: {
-                print(self.username + self.password + self.nickname)
+            HStack{
+                
+                //로그인 버튼
+                Button(action: {
+                    print(self.username + self.password + self.nickname)
 
-                sendPostRequest("http://115.85.183.243:8080/login", parameters: ["username": self.username, "password": self.password]) { responseObject, error in
-                    if let responseObject = responseObject {
-                        // 서버 응답을 이용한 원하는 작업 수행
-                        print("서버 응답:", responseObject)
-                    } else if let error = error {
-                        // 오류 처리
-                        print("오류:", error)
-                    } else {
-                        // 그 외의 예외 상황 처리
-                        print("알 수 없는 오류")
+                    sendPostRequest("http://115.85.183.243:8080/login", parameters: ["username": self.username, "password": self.password]) { responseObject, error in
+                        if let responseObject = responseObject {
+                            // 서버 응답을 이용한 원하는 작업 수행
+                            print("서버 응답:", responseObject)
+                        } else if let error = error {
+                            // 오류 처리
+                            print("오류:", error)
+                        } else {
+                            // 그 외의 예외 상황 처리
+                            print("알 수 없는 오류")
+                        }
                     }
-                }
-                // Example usage
-                loginAndFetchHeaders(username: self.username, password: self.password)
+                   
+                    loginAndFetchHeaders(username: self.username, password: self.password)
 
-                self.presentationMode.wrappedValue.dismiss()
-                
-                
-            }){
-                Text("로그인")
-                    .frame(width: 80, height: 10)
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color(.systemBlue))
-                    .cornerRadius(10)
+                    self.presentationMode.wrappedValue.dismiss()
                     
-            }
-            .padding()
-            .onSubmit {
+                    
+                }){
+                    Text("로그인")
+                        .frame(width: 80, height: 10)
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color(.systemBlue))
+                        .cornerRadius(10)
+                        
+                }
+                .padding()
+                .onSubmit {
+                    
+                }
                 
+                
+                Button(action: {
+
+                    
+                }){
+                    Text("회원가입")
+                        .frame(width: 80, height: 10)
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color(.systemBlue))
+                        .cornerRadius(10)
+                        
+                }
+                .padding()
+                .onSubmit {
+                    
+                }
             }
+            
+            
         }
         .padding(.all, 30)
         .navigationBarBackButtonHidden(true)

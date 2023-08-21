@@ -3,6 +3,10 @@ import SwiftUI
 struct DiaryView: View {
     // 상태 변수 선언
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    //사용자 정보를 담은 전역변수
+    @EnvironmentObject var userModel: UserModel
+    
     @State private var title: String = ""
     @State private var emotional: String = "😊"
     @State private var content: String = ""

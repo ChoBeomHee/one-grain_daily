@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+//이모지와 제목과 부제목이 있는 cardview
 struct CardView: View {
     var title: String
     var value: String
@@ -35,6 +36,46 @@ struct CardView: View {
                     .lineLimit(nil)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 15)
+            }
+        }
+        .frame(minHeight: 60)
+        .background(Color.white)
+        .cornerRadius(20)
+        .shadow(color: .gray, radius: 2, x: 0, y: 2)
+        .padding(.leading, 3)
+        .padding(.leading, 3)
+        .padding(.bottom, 2)
+    }
+}
+
+
+//이모지와 제목이 있는 cardview
+struct CardView2: View {
+    var value: String
+    var iconName: String
+
+    var body: some View {
+        HStack {
+            Image(systemName: iconName)
+                .foregroundColor(.blue)
+                .imageScale(.large)
+                .padding(.horizontal)
+            
+            VStack(alignment: .leading) {
+               
+                Spacer().frame(height: 20)
+                
+                Text(value)
+                    .font(.subheadline)
+                    .fontWeight(.regular)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(nil)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 15)
+                
+                Spacer().frame(height: 10)
+                
             }
         }
         .frame(minHeight: 60)
