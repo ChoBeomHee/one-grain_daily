@@ -23,13 +23,25 @@ struct MypageView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("My page")
-                .font(.title)
-                .fontWeight(.heavy)
-                .padding().frame(height:100)
-                .foregroundColor(.black)
             
-            Spacer().frame(height: 50)
+            
+            
+            
+            VStack{
+                Spacer().frame(height: 50)
+                Image(systemName: "person")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60, height: 60)
+                
+                Text("My page")
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .padding().frame(height:50)
+                    .foregroundColor(.black)
+            }
+            
+            Spacer().frame(height: 2)
             
             //서버에서 받아온 정보를 보여주려면 아래 코드로 바꿔줘야 함.
             
