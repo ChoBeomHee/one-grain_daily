@@ -23,6 +23,7 @@
 		99A57F822A91DFFD00BECC0B /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A57F812A91DFFD00BECC0B /* MypageView.swift */; };
 		99A57FBA2A91E98600BECC0B /* SignUpFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A57FB92A91E98600BECC0B /* SignUpFunc.swift */; };
 		99A57FBC2A925E2200BECC0B /* MonthlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A57FBB2A925E2100BECC0B /* MonthlyView.swift */; };
+		99F00B232A930E5A00238B50 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B222A930E5A00238B50 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		99A57F812A91DFFD00BECC0B /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		99A57FB92A91E98600BECC0B /* SignUpFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFunc.swift; sourceTree = "<group>"; };
 		99A57FBB2A925E2100BECC0B /* MonthlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyView.swift; sourceTree = "<group>"; };
+		99F00B222A930E5A00238B50 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B1A334A86AB6CBC3F8FFD41B /* Pods-one-grain-daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-one-grain-daily.release.xcconfig"; path = "Target Support Files/Pods-one-grain-daily/Pods-one-grain-daily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 		99A57F4A2A8F87AD00BECC0B /* one-grain-daily */ = {
 			isa = PBXGroup;
 			children = (
+				99F00B252A930E9700238B50 /* Model */,
 				99A57F4B2A8F87AD00BECC0B /* one_grain_dailyApp.swift */,
 				99A57FB92A91E98600BECC0B /* SignUpFunc.swift */,
 				99A57F4F2A8F87AE00BECC0B /* Assets.xcassets */,
@@ -173,6 +176,14 @@
 				99A57F682A8F87AE00BECC0B /* one_grain_dailyUITestsLaunchTests.swift */,
 			);
 			path = "one-grain-dailyUITests";
+			sourceTree = "<group>";
+		};
+		99F00B252A930E9700238B50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99F00B222A930E5A00238B50 /* CardView.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +369,7 @@
 				99A57F802A91D9C300BECC0B /* SignUpView.swift in Sources */,
 				99A57F4E2A8F87AD00BECC0B /* ContentView.swift in Sources */,
 				99A57F782A91D56A00BECC0B /* DiaryView.swift in Sources */,
+				99F00B232A930E5A00238B50 /* CardView.swift in Sources */,
 				99A57F4C2A8F87AD00BECC0B /* one_grain_dailyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

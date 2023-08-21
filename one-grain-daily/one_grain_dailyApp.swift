@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct one_grain_dailyApp: App {
+    @StateObject var userModel = UserModel()
+    
     var body: some Scene {
         WindowGroup {
             LoginView()
+                .environmentObject(userModel)
         }
     }
 }
