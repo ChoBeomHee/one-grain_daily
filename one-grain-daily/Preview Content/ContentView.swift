@@ -21,7 +21,7 @@ struct ContentView : View {
           Image(systemName: "basket.fill")
           Text("바구니") //바구니
         }
-        DiaryView()
+        DiaryButtonView()
         .tabItem {
           Image(systemName: "plus")
             Text("일기쓰기")

@@ -9,7 +9,21 @@ import SwiftUI
 
 struct DiaryButtonView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        NavigationLink(destination: DiaryView()){
+            
+            VStack{
+                Image(systemName: "pencil.circle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                Spacer().frame(height: 30)
+                
+                Text("일기 쓰기")
+            }
+            
+            
+        }
     }
 }
 

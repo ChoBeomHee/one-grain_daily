@@ -156,11 +156,11 @@
 		99A57F512A8F87AE00BECC0B /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				99F00B2E2A9469F400238B50 /* DiaryButtonView.swift */,
 				99A57FBB2A925E2100BECC0B /* MonthlyView.swift */,
 				99A57F7D2A91D98900BECC0B /* LoginView.swift */,
 				99A57F4D2A8F87AD00BECC0B /* ContentView.swift */,
 				99A57F752A8F8D1E00BECC0B /* CalanderView.swift */,
+				99F00B2E2A9469F400238B50 /* DiaryButtonView.swift */,
 				99A57F772A91D56A00BECC0B /* DiaryView.swift */,
 				99A57F792A91D72F00BECC0B /* BasketView.swift */,
 				99A57F7F2A91D9C300BECC0B /* SignUpView.swift */,
