@@ -45,6 +45,35 @@ struct DiaryPost: Codable {
 }
 
 
+//날짜를 받아서 해당 날짜에 해당하는 일기를 get
+func getDiaryData(forDate date: String, completion: @escaping (Diary?, Error?) -> Void) {
+    let urlString = "http://115.85.183.243:8080/api/v1/user/getDiary/\(date)"
+    
+    AF.request(urlString).responseDecodable(of: Diary.self) { response in
+        switch response.result {
+        case .success(let diaryData):
+            completion(diaryData, nil)
+        case .failure(let error):
+            completion(nil, error)
+        }
+    }
+}
+
+//// 사용 예시
+//getDiaryData(forDate: "2023-08-20") { diaryData, error in
+//    if let diaryData = diaryData {
+//        // Diary 구조체에서 title과 content를 추출하여 표시
+//        let title = diaryData.title
+//        let content = diaryData.content
+//        print("제목: \(title)")
+//        print("내용: \(content)")
+//    } else if let error = error {
+//        // 오류 처리
+//        print("오류: \(error)")
+//    }
+//}
+
+
 //delete diary
 func diaryDelete(id: Int, completion: @escaping (Error?) -> Void) {
     let url = "http://115.85.183.243:8080/v1/user/deletePosting/\(id)"

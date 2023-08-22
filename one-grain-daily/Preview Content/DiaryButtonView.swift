@@ -13,6 +13,7 @@ struct DiaryButtonView: View {
         NavigationLink(destination: DiaryView()){
             
             VStack{
+                
                 Image(systemName: "pencil.circle")
                     .resizable()
                     .scaledToFit()

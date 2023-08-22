@@ -124,7 +124,6 @@ struct LoginView: View {
                             .background(Color(.systemBlue))
                             .cornerRadius(10)
                     }
-                
                     
                 }
                 
