@@ -27,6 +27,7 @@
 		99F00B272A931DF300238B50 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B262A931DF300238B50 /* Data.swift */; };
 		99F00B292A93279900238B50 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B282A93279900238B50 /* Diary.swift */; };
 		99F00B2D2A9461D000238B50 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B2C2A9461D000238B50 /* Function.swift */; };
+		99F00B2F2A9469F400238B50 /* DiaryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B2E2A9469F400238B50 /* DiaryButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		99F00B262A931DF300238B50 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		99F00B282A93279900238B50 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		99F00B2C2A9461D000238B50 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		99F00B2E2A9469F400238B50 /* DiaryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryButtonView.swift; sourceTree = "<group>"; };
 		B1A334A86AB6CBC3F8FFD41B /* Pods-one-grain-daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-one-grain-daily.release.xcconfig"; path = "Target Support Files/Pods-one-grain-daily/Pods-one-grain-daily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 		99A57F512A8F87AE00BECC0B /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				99F00B2E2A9469F400238B50 /* DiaryButtonView.swift */,
 				99A57FBB2A925E2100BECC0B /* MonthlyView.swift */,
 				99A57F7D2A91D98900BECC0B /* LoginView.swift */,
 				99A57F4D2A8F87AD00BECC0B /* ContentView.swift */,
@@ -382,6 +385,7 @@
 				99A57F4E2A8F87AD00BECC0B /* ContentView.swift in Sources */,
 				99A57F782A91D56A00BECC0B /* DiaryView.swift in Sources */,
 				99F00B232A930E5A00238B50 /* CardView.swift in Sources */,
+				99F00B2F2A9469F400238B50 /* DiaryButtonView.swift in Sources */,
 				99A57F4C2A8F87AD00BECC0B /* one_grain_dailyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
