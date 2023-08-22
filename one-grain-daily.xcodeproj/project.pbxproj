@@ -28,6 +28,7 @@
 		99F00B292A93279900238B50 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B282A93279900238B50 /* Diary.swift */; };
 		99F00B2D2A9461D000238B50 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B2C2A9461D000238B50 /* Function.swift */; };
 		99F00B2F2A9469F400238B50 /* DiaryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B2E2A9469F400238B50 /* DiaryButtonView.swift */; };
+		99F00B312A9476E300238B50 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B302A9476E300238B50 /* Monthly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		99F00B282A93279900238B50 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		99F00B2C2A9461D000238B50 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		99F00B2E2A9469F400238B50 /* DiaryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryButtonView.swift; sourceTree = "<group>"; };
+		99F00B302A9476E300238B50 /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		B1A334A86AB6CBC3F8FFD41B /* Pods-one-grain-daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-one-grain-daily.release.xcconfig"; path = "Target Support Files/Pods-one-grain-daily/Pods-one-grain-daily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,6 +196,7 @@
 				99F00B262A931DF300238B50 /* Data.swift */,
 				99F00B282A93279900238B50 /* Diary.swift */,
 				99F00B2C2A9461D000238B50 /* Function.swift */,
+				99F00B302A9476E300238B50 /* Monthly.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				99A57FBA2A91E98600BECC0B /* UserInfoFunc.swift in Sources */,
 				99A57F7E2A91D98900BECC0B /* LoginView.swift in Sources */,
 				99A57F822A91DFFD00BECC0B /* MypageView.swift in Sources */,
+				99F00B312A9476E300238B50 /* Monthly.swift in Sources */,
 				99F00B292A93279900238B50 /* Diary.swift in Sources */,
 				99A57F7A2A91D72F00BECC0B /* BasketView.swift in Sources */,
 				99A57FBC2A925E2200BECC0B /* MonthlyView.swift in Sources */,

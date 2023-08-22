@@ -91,3 +91,15 @@ func diaryDelete(id: Int, completion: @escaping (Error?) -> Void) {
         }
 }
 
+//날짜데이터 형식의 String을 원하는 형식으로 변환
+func convertDate(from string: String) -> String {
+    let inputFormatter = DateFormatter()
+    inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+    if let date = inputFormatter.date(from: string) {
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "yyyy.MM.dd"
+        return outputFormatter.string(from: date)
+    } else {
+        return "Invalid date"
+    }
+}
