@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 
 func sendPostRequest(_ url: String, parameters: [String: String], completion: @escaping ([String: Any]?, Error?) -> Void) {
+    
     let targetUrl = URL(string: url)
     let paramData = try? JSONSerialization.data(withJSONObject: parameters)
 
@@ -48,7 +49,7 @@ func sendPostRequest(_ url: String, parameters: [String: String], completion: @e
 }
 
 //로그인 시 헤더 정보를 받아오는 함수
-func loginAndFetchHeaders(username: String, password: String) {
+func loginAndFetchHeaders(username: String, password: String, completion: @escaping (String?) -> Void) {
     let loginUrl = URL(string: "http://115.85.183.243:8080/login")!
 
     // Step 1: Create a URLSession
@@ -69,6 +70,7 @@ func loginAndFetchHeaders(username: String, password: String) {
         request.httpBody = requestData
     } catch {
         print("Error serializing JSON: \(error)")
+        completion(nil)
         return
     }
 
@@ -78,26 +80,29 @@ func loginAndFetchHeaders(username: String, password: String) {
             if let error = error {
                 print("Request error: \(error)")
             }
+            completion(nil)
             return
         }
 
         // Step 5: Check the response status code
         if 200 ..< 300 ~= httpResponse.statusCode {
-            // Login successful, print response headers
-            let headers = httpResponse.allHeaderFields
-            print("Response Headers:")
-            for (key, value) in headers {
-                print("\(key): \(value)")
+            // Login successful, get the Authorization header
+            if let authorizationHeader = httpResponse.allHeaderFields["Authorization"] as? String {
+                completion(authorizationHeader)
+            } else {
+                completion(nil)
             }
         } else {
             // Login failed, handle the error
             print("Login failed with status code: \(httpResponse.statusCode)")
+            completion(nil)
         }
     }
 
     // Step 6: Start the login task
     loginTask.resume()
 }
+
 
 
 

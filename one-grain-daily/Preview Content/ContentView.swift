@@ -9,6 +9,7 @@ import SwiftUI
 import Alamofire
 
 struct ContentView : View {
+    @EnvironmentObject var userModel: UserModel
   var body: some View {
     TabView {
         CalendarView()
@@ -38,6 +39,7 @@ struct ContentView : View {
             Image(systemName: "person")
             Text("My page") //환경설정
           }
+          .environmentObject(userModel)
           
     }
     .font(.headline)

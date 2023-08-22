@@ -9,6 +9,13 @@
 import SwiftUI
 import Alamofire
 
+class UserModel: ObservableObject {
+    @Published var token: String = ""
+    @Published var username: String = ""
+    @Published var password: String = ""
+    @Published var nickname: String = ""
+}
+
 struct LoginView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -19,7 +26,7 @@ struct LoginView: View {
     @State private var nickname: String = ""
     
     @State private var isLoggedIn = false //로그인 성공여부
-
+    @EnvironmentObject var userModel: UserModel //로그인 성공 시 사용자 정보를 저장할 환경변수
 
     
     var body: some View {
@@ -77,27 +84,23 @@ struct LoginView: View {
                         self.isLoggedIn = true //로그인 성공하면 true로
                         
                         print(self.username + self.password + self.nickname)
+                   
+                        
+                        loginAndFetchHeaders(username: self.username, password: self.password) { authorizationHeader in
+                            if let authorizationHeader = authorizationHeader {
+                                // 로그인 성공 및 Authorization 헤더가 있을 때
+                                print("Authorization Header:", authorizationHeader)
+                                userModel.token = authorizationHeader
+                                userModel.username = self.username
 
-                        sendPostRequest("http://115.85.183.243:8080/login", parameters: ["username": self.username, "password": self.password]) { responseObject, error in
-                            if let responseObject = responseObject {
-                                // 서버 응답을 이용한 원하는 작업 수행
-                                
-                                print("서버 응답:", responseObject)
-                            } else if let error = error {
-                                // 오류 처리
-                                print("오류:", error)
-                                
+                                // 여기에서 저장하거나 사용할 수 있음
                             } else {
-                                // 그 외의 예외 상황 처리
-                                print("알 수 없는 오류")
-                                
+                                // 로그인 실패 또는 Authorization 헤더가 없을 때
+                                print("로그인 실패 또는 Authorization 헤더 없음")
                             }
                         }
-                       
-                        loginAndFetchHeaders(username: self.username, password: self.password)
 
-                        //self.presentationMode.wrappedValue.dismiss()
-                        
+
                         
                         
                     }){

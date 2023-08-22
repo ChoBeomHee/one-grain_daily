@@ -78,52 +78,95 @@ struct DiaryView: View {
         // 저장 후 필요한 작업 수행
     }
     
+    private func makeParameter(content : String, emotional : String, title : String) -> Parameters
+        {
+            return ["content" : content,
+                    "emotional" : emotional,
+                    "title" :title
+            ]
+        }
+    
     func diaryPost() {
         
         showAlert = true //일기가 저장되었다는 알림을 띄워주기 위한 변수
         
         // Validation checks
-        guard !title.isEmpty else {
-            showAlert(message: "제목을 작성해주세요.")
-            return
-        }
+//        guard !title.isEmpty else {
+//            showAlert(message: "제목을 작성해주세요.")
+//            return
+//        }
+//
+//        guard !emotional.isEmpty else {
+//            showAlert(message: "감정을 선택해 주세요.")
+//            return
+//        }
+//
+//        guard !content.isEmpty else {
+//            showAlert(message: "일기내용을 작성해주세요.")
+//            return
+//        }
+//
+//        let diaryPost = DiaryPost(
+//            content : content,
+//            emotional : emotional,
+//            title :title
+//        )
+//        let encoTitle = makeStringKoreanEncoded(title)
+//        let encoemotion = makeStringKoreanEncoded(emotional)
+//        let encoContent = makeStringKoreanEncoded(content)
         
-        guard !emotional.isEmpty else {
-            showAlert(message: "감정을 선택해 주세요.")
-            return
-        }
-        
-        guard !content.isEmpty else {
-            showAlert(message: "일기내용을 작성해주세요.")
-            return
-        }
-        
-        let diaryPost = DiaryPost(
-            content : content,
-            emotional : emotional,
-            title :title
-        )
-        let encoTitle = makeStringKoreanEncoded(title)
-        let encoemotion = makeStringKoreanEncoded(emotional)
-        let encoContent = makeStringKoreanEncoded(content)
-        
+        let parameters: [String: Any] = [
+                    "title": title,
+                    "content": content,
+                    "emotional": emotional,
+                    
+                ]
 
-        let url = "http://115.85.183.243:8080​/api​/v1​/user​/diaryPosting?content=\(encoContent)&emotional=\(encoemotion)&title=\(title)"
+        let url = "http://115.85.183.243:8080/v1​/user​/diaryPosting"
         
-        let headers: HTTPHeaders = ["Content-Type": "application/json"]
         
-        AF.request(url, method: .post, headers: headers)
-            .responseJSON { response in
-                
-                switch response.result {
-                case .success:
-                    showAlert(message: "리뷰 작성이 완료되었습니다.")
-                    
-                    
-                case .failure(let error):
-                    showAlert(message: "리뷰 작성 실패 \(error.localizedDescription)")
-                }
-            }
+        let header: HTTPHeaders = ["Content-Type": "application/json",
+                                   "Authorization": String(userModel.token)]
+        
+//        let dataRequest = AF.request(url,
+//                                     method: .post,
+//                                     parameters: diaryPost,
+//                                     encoding: JSONEncoding.default,
+//                                     headers: header)
+        
+//        AF.request(url, method: .post,
+//                   parameters: makeParameter(content: self.content, emotional: "self.emotional", title: self.title),
+//                   encoding: JSONEncoding.default,
+//                   headers: header).responseJSON { response in
+//
+//            switch response.result {
+//            case .success:
+//                showAlert(message: "일기 작성이 완료되었습니다.")
+//
+//
+//            case .failure(let error):
+//                showAlert(message: "일기 작성 실패 \(error.localizedDescription)")
+//            }
+//        }
+//
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+                    .responseJSON { response in
+                        switch response.result {
+                        case .success(let data):
+                            if let jsonData = try? JSONSerialization.data(withJSONObject: data),
+                               let jsonString = String(data: jsonData, encoding: .utf8) {
+                                print("Response: \(jsonString)")
+                            }
+
+                        case .failure(let error):
+                            print("------------------------")
+                            print("Error: \(error)")
+                            print(url)
+                            print(header)
+                            print(JSONEncoding.default)
+                        }
+                    }
     }
     
     func showAlert(message: String) {
@@ -132,6 +175,8 @@ struct DiaryView: View {
     }
     
 }
+    
+    
 
 struct DiaryView_Previews: PreviewProvider {
     static var previews: some View {

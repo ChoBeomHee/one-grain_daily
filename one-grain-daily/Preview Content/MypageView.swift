@@ -8,12 +8,6 @@
 import SwiftUI
 import Alamofire
 
-class UserModel: ObservableObject {
-    @State var username: String = ""
-    @State var password: String = ""
-    @State var nickname: String = ""
-}
-
 
 struct MypageView: View {
     @EnvironmentObject var userModel: UserModel
@@ -43,10 +37,12 @@ struct MypageView: View {
             
             //서버에서 받아온 정보를 보여주려면 아래 코드로 바꿔줘야 함.
             
-//            CardView(title: "이름", value: userModel.username, iconName: "person")
+            CardView(title: "이름", value: userModel.username, iconName: "person")
+            CardView(title: "토큰", value: userModel.token, iconName: "person")
 //            CardView(title: "닉네임", value: userModel.nickname, iconName: "house")
             
-            CardView(title: "이름", value: "김주현",iconName: "person")
+//            CardView(title: "이름", value: "김주현",iconName: "person")
+            
             CardView(title: "닉네임", value: "양재주현", iconName: "message")
             CardView2(value: "앱 정보", iconName: "rectangle.and.text.magnifyingglass")
             CardView2(value: "이용약관", iconName: "rectangle.and.text.magnifyingglass")
