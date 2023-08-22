@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Alamofire
 
 struct MonthlyView: View {
     var body: some View {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Alamofire
 
 struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>

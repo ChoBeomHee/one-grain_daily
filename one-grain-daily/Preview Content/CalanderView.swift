@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Alamofire
 
 struct Memo: Identifiable {
     let id = UUID()

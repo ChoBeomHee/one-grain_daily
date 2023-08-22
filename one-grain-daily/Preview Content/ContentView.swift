@@ -3,9 +3,10 @@
 //  one-grain-daily
 //
 //  Created by 김주현 on 2023/08/18.
-//
+//  app의  Main Page
 
 import SwiftUI
+import Alamofire
 
 struct ContentView : View {
   var body: some View {
@@ -32,10 +33,10 @@ struct ContentView : View {
             Text("한 달 한 숟")
           }
           
-        Text("The Last Tab")
+        MypageView()
           .tabItem {
-            Image(systemName: "gearshape.circle.fill")
-            Text("환경설정") //환경설정
+            Image(systemName: "person")
+            Text("My page") //환경설정
           }
           
     }

@@ -6,7 +6,7 @@
 //  개인정보창
 
 import SwiftUI
-
+import Alamofire
 
 class UserModel: ObservableObject {
     @State var username: String = ""
@@ -23,8 +23,6 @@ struct MypageView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            
-            
             
             
             VStack{
