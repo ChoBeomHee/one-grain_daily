@@ -57,10 +57,10 @@ struct CalendarView: View {
                 }
             
                 
-                VStack{
-                    Text("기부한 쌀 : \(donate), 보유 쌀: \(have)")
-                    
-                }
+//                VStack{
+//                    Text("기부한 쌀 : \(donate), 보유 쌀: \(have)")
+//                    
+//                }
                 
                 VStack(spacing: 20) {
                     

@@ -38,12 +38,14 @@ struct MypageView: View {
                 }
                 
                 if let userInfo = userInfo {
+                    
+                    HStack{
+                        
+                        CardView3(title: "현재 쌀 개수", value: String("\(userInfo.currentGrainNum) 개"), iconName: "heart")
+                        CardView3(title: "기부한 쌀 개수", value: String("\(userInfo.donationGrainNum) 개"), iconName: "heart.fill")
+                    }
 
                     CardView(title: "이름", value: userModel.username, iconName: "person")
-                    //CardView(title: "토큰", value: userModel.token, iconName: "person")
-                    CardView(title: "현재 쌀 개수", value: String("\(userInfo.currentGrainNum) 개"), iconName: "circle.dotted")
-                    CardView(title: "기부한 쌀 개수", value: String("\(userInfo.donationGrainNum) 개"), iconName: "heart.fill")
-                    //CardView(title: "닉네임", value: "양재주현", iconName: "message")
                     CardView2(value: "앱 정보", iconName: "rectangle.and.text.magnifyingglass")
                     CardView2(value: "이용약관", iconName: "rectangle.and.text.magnifyingglass")
                     

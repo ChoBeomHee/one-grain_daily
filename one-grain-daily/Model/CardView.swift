@@ -17,13 +17,54 @@ struct CardView: View {
     var body: some View {
         HStack {
             Image(systemName: iconName)
-                .foregroundColor(.blue)
+                .foregroundColor(.black)
                 .imageScale(.large)
                 .padding(.horizontal)
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.footnote)
                     .foregroundColor(Color.gray)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 15)
+                    .padding(.bottom, 3)
+                
+                Text(value)
+                    .font(.subheadline)
+                    .fontWeight(.regular)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(nil)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 15)
+            }
+        }
+        .frame(minHeight: 60)
+        .background(Color.white)
+        .cornerRadius(20)
+        .shadow(color: .gray, radius: 2, x: 0, y: 2)
+        .padding(.leading, 3)
+        .padding(.leading, 3)
+        .padding(.bottom, 2)
+    }
+}
+
+//색상이 빨간색인 CardView
+struct CardView3: View {
+    var title: String
+    var value: String
+    var iconName: String
+
+    var body: some View {
+        HStack {
+            Image(systemName: iconName)
+                .foregroundColor(.red)
+                .imageScale(.large)
+                .padding(.horizontal)
+            VStack(alignment: .leading) {
+                Text(title)
+                    .font(.footnote)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.black)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 15)
                     .padding(.bottom, 3)
@@ -57,7 +98,7 @@ struct CardView2: View {
     var body: some View {
         HStack {
             Image(systemName: iconName)
-                .foregroundColor(.blue)
+                .foregroundColor(.black)
                 .imageScale(.large)
                 .padding(.horizontal)
             

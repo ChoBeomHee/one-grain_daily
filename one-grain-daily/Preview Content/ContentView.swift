@@ -24,10 +24,10 @@ struct ContentView : View {
         }
         DiaryButtonView()
         .tabItem {
-          Image(systemName: "plus")
+          Image(systemName: "pencil.line")
             Text("일기쓰기")
         }
-        .badge(10)
+        //.badge()
         MonthlyView()
           .tabItem {
             Image(systemName: "cup.and.saucer.fill")
