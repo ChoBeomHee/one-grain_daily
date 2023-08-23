@@ -16,19 +16,21 @@ struct BasketView: View {
     var body: some View {
         
         VStack{
-            Text("함께 모은 쌀")
-                .font(.title)
+            Text("🧺 함께 모은 쌀 🧺")
+                .font(.system(size:25))
                 .fontWeight(.heavy)
             
             Spacer().frame(height: 50)
 
             Text("🍚")
-                .font(.system(size: 190))
-                .frame(height: 190)
+                .font(.system(size: 170))
+                .frame(height: 170)
             
             Spacer().frame(height: 50)
             
             Text("\(current) / \(max)")
+                .font(.system(size:20))
+                .fontWeight(.semibold)
         }.onAppear{
             
             getBasket2 { (basket, error) in

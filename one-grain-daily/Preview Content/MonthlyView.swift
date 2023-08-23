@@ -34,7 +34,8 @@ struct MonthlyView: View {
                 HStack { //픽커
                     Picker("년도", selection: $selectedYear) {
                         ForEach(1900..<2101, id: \.self) { year in
-                            Text("\(year)년").tag(year)
+                            let y = String(year)
+                            Text("\(y)년").tag(year)
                         }
                     }
                     .pickerStyle(WheelPickerStyle())

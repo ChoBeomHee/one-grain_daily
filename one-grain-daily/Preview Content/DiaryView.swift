@@ -33,9 +33,12 @@ struct DiaryView: View {
                     Picker("감정 선택", selection: $emotionalIndex) {
                         ForEach(0..<emotions.count, id: \.self) { index in
                             Text(emotions[index])
-                                .font(.system(size: 100))
+                                .font(.system(size: 33))
+                                .frame(height: 33)
+                                
                         }
                     }
+                    
                     .pickerStyle(SegmentedPickerStyle())
                     .onChange(of: emotionalIndex) { newValue in emotional = emotions2[newValue]}
                                        
@@ -48,7 +51,7 @@ struct DiaryView: View {
                 }
                 
             }
-            .navigationBarTitle("일기 작성")
+            .navigationBarTitle(" ✍️ 일기 작성")
             .navigationBarItems(
                 leading: Button(action: {
                     // 취소 버튼 눌렀을 때 수행할 작업 = 뒤로가기

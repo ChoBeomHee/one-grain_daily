@@ -39,6 +39,7 @@ struct CalendarView: View {
                     selection: $date,
                     displayedComponents: [.date]
                 )
+                .foregroundColor(.yellow)
                 .datePickerStyle(.graphical)
                 .onChange(of: date) { newValue in
                     let dateFormatter = DateFormatter()
