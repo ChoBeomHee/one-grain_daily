@@ -31,7 +31,7 @@ struct CalendarView: View {
     var body: some View {
         ScrollView{
             VStack(spacing: 10) {
-                Text("Calander")
+                Text("🗓️ Calander")
                     .font(.title)
                     .fontWeight(.heavy)
                 

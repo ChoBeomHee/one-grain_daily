@@ -17,6 +17,7 @@ struct DiaryView: View {
     
     // 이모티콘 목록
     let emotions = ["😄", "😢", "😡", "😷","🥱", "😴"]
+    let emotions2 = ["happy", "sad", "angry", "sick", "tired", "sleepy"]
     //happy, sad, angry, sick, tired, sleepy
     
     var body: some View {
@@ -51,7 +52,7 @@ struct DiaryView: View {
                     Text("취소")
                 },
                 trailing: Button(action: {
-                    postDiary(content: "일기 내용", emotional: "So sad", title: "일기 제목") { data, response, error in
+                    postDiary(content: "\(content)", emotional: "So sad", title: "\(title)") { data, response, error in
                         if let error = error {
                             print("Error: \(error)")
                         } else if let data = data, let response = response as? HTTPURLResponse {
@@ -71,7 +72,7 @@ struct DiaryView: View {
                 }
             ).alert(isPresented: $showAlert) {
                 
-                Alert(title: Text("알림"), message: Text(alertMessage), dismissButton: .default(Text("확인")) {
+                Alert(title: Text("알림"), message: Text("일기 작성 완료!"), dismissButton: .default(Text("확인")) {
                     // 저장이 완료되면 경고창을 닫고 뒤로 가기
                     presentationMode.wrappedValue.dismiss()
                 })

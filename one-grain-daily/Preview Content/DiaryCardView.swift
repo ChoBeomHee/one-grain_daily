@@ -19,12 +19,12 @@ struct DiaryCardView: View {
 
     var body: some View {
         
-        VStack(alignment: .leading) {
-            HStack(alignment: .top) {
-                Text("제목 : \(title)")
+        VStack(alignment: .center) {
+            HStack(alignment: .center) {
+                Text("\(title)")
                     .foregroundColor(.white)
                     .multilineTextAlignment(.leading)
-                    .padding(5)
+                    .padding(10)
                     .background(Color.yellow)
                     .cornerRadius(10)
                 
