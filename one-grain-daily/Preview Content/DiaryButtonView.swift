@@ -18,10 +18,11 @@ struct DiaryButtonView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100, height: 100)
-                Spacer().frame(height: 30)
+                
+                Spacer().frame(height: 20)
                 
                 Text("일기 쓰고 쌀알 얻기")
-                    .font(.system(size: 30, weight: .bold, design: .rounded)) // 사이즈, 굵기, 디자인을 설정
+                    .font(.system(size: 15, weight: .bold, design: .rounded)) // 사이즈, 굵기, 디자인을 설정
                     .foregroundColor(.gray) // 글자색 지정
             }
             

@@ -13,6 +13,7 @@ struct Diary: Codable {
     let content: String
     let emotion: Emotion
     let title: String
+    let id: Int
     // Add any other properties you need
 }
 
@@ -52,26 +53,36 @@ func getDiaryData(forDate date: String, completion: @escaping (Diary?, Error?) -
     }
 }
 
-//// 사용 예시
-//getDiaryData(forDate: "2023-08-20") { diaryData, error in
-//    if let diaryData = diaryData {
-//        // Diary 구조체에서 title과 content를 추출하여 표시
-//        let title = diaryData.title
-//        let content = diaryData.content
-//        print("제목: \(title)")
-//        print("내용: \(content)")
-//    } else if let error = error {
-//        // 오류 처리
-//        print("오류: \(error)")
-//    }
-//}
 
-
-//delete diary
-func diaryDelete(id: Int, completion: @escaping (Error?) -> Void) {
-    let url = "http://115.85.183.243:8080/v1/user/deletePosting/\(id)"
+func deletePosting(id: Int, auth: String, completion: @escaping (Error?) -> Void) {
+    let urlString = "http://115.85.183.243:8080​/api​/v1​/user​/deletePosting​/\(id)"
     
-    AF.request(url, method: .delete)
+    
+    AF.request(urlString, method: .delete)
+        .validate()
+        .response { response in
+            switch response.result {
+            case .success:
+                // DELETE 요청이 성공적으로 완료됨
+                completion(nil)
+            case .failure(let error):
+                // 오류가 발생함
+                completion(error)
+            }
+        }
+}
+
+
+func diaryDelete(id: Int, auth: String,  completion: @escaping (Error?) -> Void) {
+    let url = "http://115.85.183.243:8080​/api​/v1​/user​/deletePosting​/\(id)"
+    
+    // 헤더 설정
+    let headers: HTTPHeaders = [
+            "Authorization": "\(auth)", // 필요한 경우 토큰 또는 다른 인증 정보로 교체
+            "Content-Type": "application/json" // 필요한 헤더 추가
+        ]
+    
+    AF.request(url, method: .delete, headers: headers)
         .response { response in
             switch response.result {
             case .success:
@@ -83,6 +94,9 @@ func diaryDelete(id: Int, completion: @escaping (Error?) -> Void) {
             }
         }
 }
+
+
+
 
 //날짜데이터 형식의 String을 원하는 형식으로 변환
 func convertDate(from string: String) -> String {

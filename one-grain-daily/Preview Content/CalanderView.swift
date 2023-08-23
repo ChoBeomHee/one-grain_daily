@@ -16,6 +16,7 @@ struct CalendarView: View {
     @State private var content: String = ""
     @State private var emotion_name: String = ""
     @State private var title: String = ""
+    @State private var id: Int = 0
     
     @State private var date = Date()
     @State private var dateString: String = ""
@@ -66,7 +67,7 @@ struct CalendarView: View {
                     if content.isEmpty || emotion_name.isEmpty || title.isEmpty {
                         EmptyView() // 데이터가 없는 경우 EmptyView 표시
                     } else {
-                        DiaryCardView(title: title, content: content, iconName: emotion_name, date: dateString)
+                        DiaryCardView(title: title, content: content, emotion: emotion_name, date: dateString, id:id)
                     }
                 }.padding(13)
 
@@ -93,33 +94,17 @@ struct CalendarView: View {
             
             }
                 
-//                Task {
-//                    do {
-//                            let (diary, error) = try await withUnsafeThrowingContinuation { continuation in
-//                                getDiary(date: dateString) { diary, error in
-//                                    continuation.resume(returning: (diary, error))
-//                                }
-//                            }
-//
-//                            if let diary = diary {
-//
-//                            } else if let error = error {
-//                                // Handle error
-//                                print("오류: \(error.localizedDescription)")
-//                            }
-//                        } catch {
-//                            // Handle any other error
-//                            print("오류: \(error.localizedDescription)")
-//                        }
-//                }
-        
             }
        
         
     }
     
+    //delete diary
+    //http://115.85.183.243:8080​/api​/v1​/user​/deletePosting​/{id}
+    
     func getDiary(date: String, completion: @escaping (Diary?, Error?) -> Void) {
         let urlString = "http://115.85.183.243:8080/api/v1/user/getDiary/\(date)"
+    
         
         AF.request(urlString, headers: ["Content-Type": "application/json", "Authorization": String(userModel.token)])
             .responseData { response in
@@ -128,7 +113,6 @@ struct CalendarView: View {
                     do {
                         let decoder = JSONDecoder()
                         decoder.keyDecodingStrategy = .convertFromSnakeCase // JSON의 키가 snake_case인 경우
-                        print(decoder)
                         
                         let diary = try decoder.decode(Diary.self, from: data)
                         print("---------------")
@@ -140,6 +124,7 @@ struct CalendarView: View {
                         content = diary.content
                         emotion_name = diary.emotion.name
                         title = diary.title
+                        id = diary.id
                         
                     } catch {
                         completion(nil, error)

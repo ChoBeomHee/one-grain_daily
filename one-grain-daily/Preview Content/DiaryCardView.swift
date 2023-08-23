@@ -11,11 +11,33 @@ struct DiaryCardView: View {
     @EnvironmentObject var userModel: UserModel
     var title: String
     var content: String
-    var iconName: String
+    var emotion: String
     var date:String //작성날짜
+    var id: Int //일기 번호
 
     @State private var isEditingReview = false
     @State private var showDeleteAlert = false //일기를 삭제할건지 물어보는 알림
+    
+    let emotion_dict = ["happy": "😄", "sad": "😢", "angry": "😡", "sick": "😷", "tired": "🥱", "sleepy": "😴" ]
+    
+    var emotion2: String {
+            switch emotion {
+            case "happy":
+                return "😄"
+            case "sad":
+                return "😢"
+            case "angry":
+                return "😡"
+            case "sick":
+                return "😷"
+            case "tired":
+                return "🥱"
+            case "sleepy":
+                return "😴"
+            default:
+                return "😄" // 기본값
+            }
+        }
 
     var body: some View {
         
@@ -28,12 +50,9 @@ struct DiaryCardView: View {
                     .background(Color.yellow)
                     .cornerRadius(10)
                 
-                HStack(spacing: 0) {
-                   Text("")
-                }
-                .padding(.leading, 5)
-                .padding(.trailing, 2)
-                
+                Text(emotion2)
+                    .padding(.leading, 5)
+                    .padding(.trailing, 2)
               
             }
             
@@ -73,7 +92,17 @@ struct DiaryCardView: View {
                             title: Text("확인"),
                             message: Text("일기를 삭제하시겠습니까?"),
                             primaryButton: .default(Text("삭제"), action: {
-                                //일기삭제함수
+                                
+                                diaryDelete(id: id, auth: userModel.token ) { error in
+                                    if let error = error {
+                                        // 오류 처리
+                                        print("DELETE 요청 실패: \(error.localizedDescription)")
+                                    } else {
+                                        // DELETE 요청 성공
+                                        print("DELETE 요청 성공")
+                                    }
+                                }
+
                             }),
                             secondaryButton: .cancel(Text("취소"), action: {})
                         )
