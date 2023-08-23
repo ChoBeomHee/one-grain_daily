@@ -55,25 +55,6 @@ struct Donate: Codable, Identifiable {
        }
 }
 
-//기부
-struct Donation: Codable, Identifiable {
-    var donation_id: Int? //기부
-    var status: String? //상태
-    var image_url: String? //사진
-    var created_at: Time?//생성일자
-    var modified_at: Time? //수정일자
-    var basket: Int? //바구니 수량
-  
-    enum CodingKeys: String, CodingKey {
-        case donation_id,status,image_url,created_at,modified_at,basket
-    }
-    
-    var id: Int? {
-           return donation_id
-       }
-}
-
-
 //쌀
 struct Grain: Codable, Identifiable {
     var member_id: Int? //아이디

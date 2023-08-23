@@ -11,25 +11,18 @@ import Alamofire
 // MARK: - Diary
 struct Diary: Codable {
     let content: String
-    let createTime: Time
     let emotion: Emotion
-    let id: Int
     let title: String
+    // Add any other properties you need
 }
 
-// MARK: - Time //일자
-struct Time: Codable {
-    let date, hours, minutes, month: Int
-    let nanos, seconds, time, year: Int
-}
-
-// MARK: - Emotion //감정
 struct Emotion: Codable {
     let id: Int
     let image: String
     let month: Int
     let name: String
 }
+
 
 struct DiaryPost: Codable {
     
