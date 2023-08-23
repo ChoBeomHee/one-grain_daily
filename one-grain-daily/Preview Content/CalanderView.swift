@@ -76,6 +76,10 @@ struct CalendarView: View {
             }
             .padding(13)
                 .onAppear {
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd" // 날짜 형식을 지정합니다
+                    dateString = dateFormatter.string(from: date)
                 
                 Task {
                     do {

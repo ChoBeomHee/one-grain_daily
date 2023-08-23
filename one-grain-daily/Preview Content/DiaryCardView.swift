@@ -34,6 +34,10 @@ struct DiaryCardView: View {
                 .padding(.leading, 5)
                 .padding(.trailing, 2)
                 
+              
+            }
+            
+            HStack(alignment: .top){
                 Text("\(date)")
                     .font(.footnote)
                     .foregroundColor(.gray)
@@ -76,8 +80,6 @@ struct DiaryCardView: View {
                     })
                     .padding(.trailing,10)
                 }
-                
-              
             }
             .padding(.leading, 5)
             
