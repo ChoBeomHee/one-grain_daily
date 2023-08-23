@@ -67,7 +67,7 @@ struct MypageView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("로그아웃")
-                        .foregroundColor(.blue)
+                        .foregroundColor(.orange)
                 }.fullScreenCover(isPresented: $isLogoutActive) {
                     LoginView()
                 }

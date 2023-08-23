@@ -29,17 +29,19 @@ struct CalendarView: View {
     var body: some View {
         ScrollView{
             VStack(spacing: 10) {
+                
                 Text("🗓️ Calander")
                     .font(.title)
                     .fontWeight(.heavy)
-                
                     .foregroundColor(.black)
+                
+                Spacer().frame(height: 15)
+                
                 DatePicker(
                     "Start Date",
                     selection: $date,
                     displayedComponents: [.date]
                 )
-                .foregroundColor(.yellow)
                 .datePickerStyle(.graphical)
                 .onChange(of: date) { newValue in
                     let dateFormatter = DateFormatter()
@@ -66,7 +68,30 @@ struct CalendarView: View {
                 VStack(spacing: 20) {
                     
                     if content.isEmpty || emotion_name.isEmpty || title.isEmpty {
-                        EmptyView() // 데이터가 없는 경우 EmptyView 표시
+                        //EmptyView() // 데이터가 없는 경우 EmptyView 표시
+                        VStack(alignment: .leading ) {
+                            Divider()
+                            Text("💌 일기 쓰고 기부에 동참하자")
+                                .font(.footnote)
+                                .fontWeight(.bold)
+                                .foregroundColor(.gray)
+                            
+                            Divider()
+                            
+                            Text("💌 일기를 쓰면 쌀을 하루에 최대 한 톨 얻을 수 있어요")
+                                .font(.footnote)
+                                .fontWeight(.bold)
+                                .foregroundColor(.gray)
+                            
+                            Divider()
+                            
+                            Text("💌 쌀 30개를 모으면 바구니에 담아서 기부 할 수 있어요")
+                                .font(.footnote)
+                                .fontWeight(.bold)
+                                .foregroundColor(.gray)
+                            Divider()
+                                            
+                                        }
                     } else {
                         DiaryCardView(title: title, content: content, emotion: emotion_name, date: dateString, id:id)
                     }

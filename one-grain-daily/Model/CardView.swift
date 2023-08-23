@@ -60,6 +60,7 @@ struct CardView3: View {
                 .foregroundColor(.red)
                 .imageScale(.large)
                 .padding(.horizontal)
+            
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.footnote)
@@ -70,7 +71,7 @@ struct CardView3: View {
                     .padding(.bottom, 3)
                 
                 Text(value)
-                    .font(.subheadline)
+                    .font(.system(size: 17))
                     .fontWeight(.regular)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)

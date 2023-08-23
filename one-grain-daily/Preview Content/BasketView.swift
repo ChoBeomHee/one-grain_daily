@@ -31,6 +31,39 @@ struct BasketView: View {
             Text("\(current) / \(max)")
                 .font(.system(size:20))
                 .fontWeight(.semibold)
+            
+            Spacer().frame(height: 40)
+            
+            VStack(alignment: .leading ) {
+                Divider()
+                Text("🥄 사람들이 공용 바구니에 모은 쌀을 확인할 수 있어요")
+                    .font(.footnote)
+                    .fontWeight(.bold)
+                    .foregroundColor(.gray)
+                
+                Divider()
+                
+                Text("🥄 ( 모인 쌀알 개수 / 모아야 하는 쌀 개수 )")
+                    .font(.footnote)
+                    .fontWeight(.bold)
+                    .foregroundColor(.gray)
+                
+                Divider()
+                
+                Text("🥄 10000개가 모이면 기부할 수 있어요!")
+                    .font(.footnote)
+                    .fontWeight(.bold)
+                    .foregroundColor(.gray)
+                Divider()
+                
+                Text("🥄 내가 기부한 쌀 개수는 MyPage에서 확인할 수 있어요")
+                    .font(.footnote)
+                    .fontWeight(.bold)
+                    .foregroundColor(.gray)
+                
+                Divider()
+                                
+            }.padding()
         }.onAppear{
             
             getBasket2 { (basket, error) in

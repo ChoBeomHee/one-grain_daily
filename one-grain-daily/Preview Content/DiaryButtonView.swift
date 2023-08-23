@@ -14,16 +14,18 @@ struct DiaryButtonView: View {
             
             VStack{
                 
+                
                 Image("diary")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 110, height: 110)
                 
-                Spacer().frame(height: 20)
+                Spacer().frame(height: 22)
                 
                 Text("일기 쓰고 쌀알 얻기")
-                    .font(.system(size: 15, weight: .bold, design: .rounded)) // 사이즈, 굵기, 디자인을 설정
+                    .font(.system(size: 20, weight: .bold, design: .rounded)) // 사이즈, 굵기, 디자인을 설정
                     .foregroundColor(.gray) // 글자색 지정
+                
             }
             
         }

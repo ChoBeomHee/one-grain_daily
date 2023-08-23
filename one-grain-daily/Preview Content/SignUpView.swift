@@ -109,7 +109,7 @@ struct SignUpView: View {
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()
-                    .background(Color(.systemBlue))
+                    .background(Color(.orange))
                     .cornerRadius(10)
                     
             }

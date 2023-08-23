@@ -75,7 +75,6 @@ struct MonthlyView: View {
                 
                 
                 CuteCardView(message: comment)
-                
 
                 
                 

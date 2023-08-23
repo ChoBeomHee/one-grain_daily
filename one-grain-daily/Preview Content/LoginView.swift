@@ -32,7 +32,28 @@ struct LoginView: View {
     var body: some View {
         NavigationView{
             VStack{
-                HStack{}
+                HStack{
+                    Spacer()
+                    Image("redString") // 적십자 이미지 추가
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 180, height: 180)
+                        .padding()
+                    Spacer()
+                    
+                }
+                
+                Text("적십자와 함께하는 \"하루 한 톨\" ") // 문구 추가
+                    .font(.system(size:20))
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                    
+                Image("rice2")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 150)
+                                
+                                
                 Text("LOGIN")
                     .font(.title)
                     .fontWeight(.heavy)
@@ -110,10 +131,11 @@ struct LoginView: View {
                             .font(.headline)
                             .foregroundColor(.white)
                             .padding()
-                            .background(Color(.systemBlue))
+                            .background(Color(.orange))
                             .cornerRadius(10)
                             
                     }
+
                     .padding()
                     .onSubmit {
                         
@@ -125,13 +147,13 @@ struct LoginView: View {
                             .font(.headline)
                             .foregroundColor(.white)
                             .padding()
-                            .background(Color(.systemBlue))
+                            .background(Color(.orange))
                             .cornerRadius(10)
                     }
                     
                 }
                 
-                
+                Spacer()
             }
             .padding(.all, 30)
             .navigationBarBackButtonHidden(true)

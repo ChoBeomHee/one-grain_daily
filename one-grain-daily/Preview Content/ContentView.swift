@@ -43,6 +43,7 @@ struct ContentView : View {
           .environmentObject(userModel)
           
     }
+    .accentColor(.orange)
     .font(.headline)
   }
 }
