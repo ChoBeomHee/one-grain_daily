@@ -13,14 +13,17 @@ struct BasketView: View {
         var rice:Int = 8000
         
         VStack{
-            Text("바구니")
-                .font(.title2)
+            Text("함께 모은 쌀")
+                .font(.title)
                 .fontWeight(.heavy)
             
-            Image("rice2")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 300)
+            Spacer().frame(height: 50)
+
+            Text("🍚")
+                .font(.system(size: 190))
+                .frame(height: 190)
+            
+            Spacer().frame(height: 50)
             
             Text("\(rice) / 10000")
         }
