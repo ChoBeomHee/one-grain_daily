@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct Monthly: Codable {
+    let comment: String
+    let nickname: String
+    let summery: String
+}
+
+
