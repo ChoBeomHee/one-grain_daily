@@ -13,4 +13,12 @@ struct Monthly: Codable {
     let summery: String
 }
 
+struct Basket: Codable {
+    let current_grain: Int
+    //let max:Bool
+    let max_grain: Int
+   
+}
+
+
 

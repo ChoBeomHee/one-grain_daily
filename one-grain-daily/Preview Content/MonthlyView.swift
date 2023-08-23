@@ -10,8 +10,7 @@ import Alamofire
 //http://115.85.183.243:8080/api/v1/user/monthreview/\(month)
 
 struct MonthlyView: View {
-    //@Binding var selectedYear: Int
-    //@Binding var selectedMonth: Int
+
     @EnvironmentObject var userModel: UserModel
     @State private var selectedYear = Calendar.current.component(.year, from: Date())
     @State private var selectedMonth = Calendar.current.component(.month, from: Date())
