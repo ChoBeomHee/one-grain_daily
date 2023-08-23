@@ -81,16 +81,6 @@ struct DiaryView: View {
         }
     }
     
-    // 일기를 저장하는 함수
-    func saveDiary() {
-        showAlert = true //일기가 저장되었다는 알림을 띄워주기 위한 변수
-        // 여기에서 일기 저장 로직을 구현할 수 있음
-        print("제목: \(title)")
-        print("감정: \(emotional)")
-        print("내용: \(content)")
-        
-        // 저장 후 필요한 작업 수행
-    }
     
     private func makeParameter(content : String, emotional : String, title : String) -> Parameters
         {
@@ -163,9 +153,7 @@ struct DiaryView: View {
 //            emotional : emotional,
 //            title :title
 //        )
-//        let encoTitle = makeStringKoreanEncoded(title)
-//        let encoemotion = makeStringKoreanEncoded(emotional)
-//        let encoContent = makeStringKoreanEncoded(content)
+
         
         let parameters: [String: Any] = [
                     "title": title,

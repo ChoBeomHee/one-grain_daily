@@ -17,6 +17,7 @@ struct Memo: Identifiable {
 struct CalendarView: View {
     @EnvironmentObject var userModel: UserModel
     @State private var date = Date()
+    @State private var dateString: String = ""
     @State private var memoText = ""
     @State private var memos: [Memo] = []
     
@@ -28,84 +29,76 @@ struct CalendarView: View {
     }
 
     var body: some View {
-        VStack {
-            DatePicker(
-                "Start Date",
-                selection: $date,
-                displayedComponents: [.date]
-            )
-            .datePickerStyle(.graphical)
-            .onChange(of: date) { newValue in
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd" // 날짜 형식을 지정합니다
-                let dateString = dateFormatter.string(from: newValue)
+        ScrollView{
+            VStack(spacing: 10) {
+                Text("Calander")
+                    .font(.title)
+                    .fontWeight(.heavy)
                 
-                getDiary(date: dateString) { (diary, error) in
-                    if let error = error {
-                        // 에러 처리
-                        print("에러 발생: \(error.localizedDescription)")
-                    } else if let diary = diary {
-                        // 일기 정보 처리
-                        // ...
+                    .foregroundColor(.black)
+                DatePicker(
+                    "Start Date",
+                    selection: $date,
+                    displayedComponents: [.date]
+                )
+                .datePickerStyle(.graphical)
+                .onChange(of: date) { newValue in
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd" // 날짜 형식을 지정합니다
+                    dateString = dateFormatter.string(from: newValue)
+                    
+                    getDiary(date: dateString) { (diary, error) in
+                        if let error = error {
+                            // 에러 처리
+                            print("에러 발생: \(error.localizedDescription)")
+                        } else if let diary = diary {
+                            // 일기 정보 처리
+                            // ...
+                        }
                     }
                 }
-            }
-        
             
-            VStack{
-                Text("기부한 쌀 : \(donate), 보유 쌀: \(have)")
-                Text("\(date)")
-            }
-            
-            VStack {
-                Section(header: Text("작성일 : 2023-08-22 ").font(.footnote)) {
+                
+                VStack{
+                    Text("기부한 쌀 : \(donate), 보유 쌀: \(have)")
+                }
+                
+                VStack(spacing: 20) {
+                    //서버에서 받아온 내용을 표시하도록 바꿔야됨.
                     let content: String = "오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다."
 
-                    DiaryCardView(title: "오늘의 일기", value: content, iconName: "person")
+                    DiaryCardView(title: "오늘의 일기", content: content, iconName: "person", date: dateString)
+
+                }.padding(13)
 
                 
-                }
+    
             }
-
-            
-            TextField("메모 추가", text: $memoText)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            Button("메모 저장") {
+            .padding(13)
+                .onAppear {
                 
-            }
-            
-            List(filteredMemos) { memo in
-                Text("\(memo.date, formatter: dateFormatter): \(memo.text)")
-            }
-        }.onAppear {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd" // 날짜 형식을 지정합니다
-            let dateString = dateFormatter.string(from: date)
-            
-            
-            Task {
-                do {
-                        let (diary, error) = try await withUnsafeThrowingContinuation { continuation in
-                            getDiary(date: dateString) { diary, error in
-                                continuation.resume(returning: (diary, error))
+                Task {
+                    do {
+                            let (diary, error) = try await withUnsafeThrowingContinuation { continuation in
+                                getDiary(date: dateString) { diary, error in
+                                    continuation.resume(returning: (diary, error))
+                                }
                             }
-                        }
-                        
-                        if let diary = diary {
-                            // Handle userInfo
-        
-                        } else if let error = error {
-                            // Handle error
+                            
+                            if let diary = diary {
+                                // Handle userInfo
+            
+                            } else if let error = error {
+                                // Handle error
+                                print("오류: \(error.localizedDescription)")
+                            }
+                        } catch {
+                            // Handle any other error
                             print("오류: \(error.localizedDescription)")
                         }
-                    } catch {
-                        // Handle any other error
-                        print("오류: \(error.localizedDescription)")
-                    }
+                }
+        
             }
-    
         }
         
     }
