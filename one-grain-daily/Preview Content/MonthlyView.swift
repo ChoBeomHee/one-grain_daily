@@ -10,12 +10,22 @@ import Alamofire
 
 struct MonthlyView: View {
     @EnvironmentObject var userModel: UserModel
+    @State private var month: Int = 8
+    @State private var username: String = "주현"
+    @State private var rice: String = "흰쌀밥"
+    @State private var comment: String = "이번 한 달도 고생 많으셨어요!\n이번달은 대체로 좋은 추억이 많았던 만큼\n 좋은 추억 잘 간직하셨으면 좋겠습니다 :)"
+    
     var body: some View {
         
-        var rice:Int = 8000
         
         VStack{
-            Text("바구니")
+            Text(" 🥄 한 달 한 숟")
+                .font(.title)
+                .fontWeight(.heavy)
+                .padding().frame(height:100)
+                .foregroundColor(.black)
+            
+            Text("\(username)님의 \(month)월은 \(rice)입니다.")
                 .font(.title2)
                 .fontWeight(.heavy)
             
@@ -24,7 +34,7 @@ struct MonthlyView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 300)
             
-            Text("\(rice) / 10000")
+            Text("\(comment)")
         }
     }
 }

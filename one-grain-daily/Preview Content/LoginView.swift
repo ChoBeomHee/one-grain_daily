@@ -32,7 +32,7 @@ struct LoginView: View {
     var body: some View {
         NavigationView{
             VStack{
-                Text("로그인")
+                Text("LOGIN")
                     .font(.title)
                     .fontWeight(.heavy)
                     .padding().frame(height:100)
