@@ -26,7 +26,6 @@ struct DiaryButtonView: View {
                     .foregroundColor(.gray) // 글자색 지정
             }
             
-            
         }
     }
 }

@@ -99,9 +99,6 @@ struct CalendarView: View {
         
     }
     
-    //delete diary
-    //http://115.85.183.243:8080​/api​/v1​/user​/deletePosting​/{id}
-    
     func getDiary(date: String, completion: @escaping (Diary?, Error?) -> Void) {
         let urlString = "http://115.85.183.243:8080/api/v1/user/getDiary/\(date)"
     
@@ -142,8 +139,6 @@ struct CalendarView: View {
             }
     }
 
-    
-    
     
 //    func getDiary(date: String, completion: @escaping (Diary?, Error?) -> Void) {
 //        let urlString = "http://115.85.183.243:8080/api/v1/user/getDiary/\(date)"

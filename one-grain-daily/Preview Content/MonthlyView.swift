@@ -10,6 +10,8 @@ import Alamofire
 
 struct MonthlyView: View {
     @EnvironmentObject var userModel: UserModel
+    @State private var selectedYear = Calendar.current.component(.year, from: Date())
+    @State private var selectedMonth = Calendar.current.component(.month, from: Date())
     
     @State private var month: Int = 8
     @State private var username: String = "주현"
@@ -18,29 +20,64 @@ struct MonthlyView: View {
     
     var body: some View {
         
+        ScrollView(){
+            VStack{
+
+                Text(" 🥄 한 달 한 숟")
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .padding().frame(height:90)
+                    .foregroundColor(.black)
+                
+                YearMonthPicker(selectedYear: $selectedYear, selectedMonth: $selectedMonth)
+                                .frame(height: 100) // YearMonthPicker의 높이를 조절
+                                .padding(.horizontal, 20) // 좌우 여백 추가
+                
+                Text("\(username)님의 \(month)월은 \(rice)입니다.")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                
+                Image("rice2")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 300)
+                
+                
+
+                
+                CuteCardView(message: comment)
+            }
+        }
         
-        VStack{
-            Text(" 🥄 한 달 한 숟")
-                .font(.title)
-                .fontWeight(.heavy)
-                .padding().frame(height:110)
-                .foregroundColor(.black)
+        
+        
+        
+    }
+}
+
+struct YearMonthPicker: View {
+    @Binding var selectedYear: Int
+    @Binding var selectedMonth: Int
+    
+    var body: some View {
+        HStack {
+            Picker("년도", selection: $selectedYear) {
+                ForEach(1900..<2101, id: \.self) { year in
+                    Text("\(year)년").tag(year)
+                }
+            }
+            .pickerStyle(WheelPickerStyle())
             
-            Text("\(username)님의 \(month)월은 \(rice)입니다.")
-                .font(.title2)
-                .fontWeight(.bold)
-            
-            Image("rice2")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 300)
-            
-            //Text("\(comment)")
-            
-            CuteCardView(message: comment)
+            Picker("월", selection: $selectedMonth) {
+                ForEach(1..<13, id: \.self) { month in
+                    Text("\(month)월").tag(month)
+                }
+            }
+            .pickerStyle(WheelPickerStyle())
         }
     }
 }
+
 
 struct MonthlyView_Previews: PreviewProvider {
     static var previews: some View {
@@ -68,9 +105,9 @@ struct CuteCardView: View {
     }
 }
 
-struct CuteCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CuteCardView(message: "안녕하세요!")
-            .previewLayout(.sizeThatFits)
-    }
-}
+//struct CuteCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CuteCardView(message: "안녕하세요!")
+//            .previewLayout(.sizeThatFits)
+//    }
+//}
