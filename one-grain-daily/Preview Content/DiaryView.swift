@@ -9,7 +9,8 @@ struct DiaryView: View {
     @EnvironmentObject var userModel: UserModel
     
     @State private var title: String = ""
-    @State private var emotional: String = "😊"
+    @State private var emotional: String = "happy" //서버에 전달할 변수
+    @State private var emotionalIndex: Int = 0
     @State private var content: String = ""
     
     @State private var showAlert = false
@@ -18,6 +19,7 @@ struct DiaryView: View {
     // 이모티콘 목록
     let emotions = ["😄", "😢", "😡", "😷","🥱", "😴"]
     let emotions2 = ["happy", "sad", "angry", "sick", "tired", "sleepy"]
+   
     //happy, sad, angry, sick, tired, sleepy
     
     var body: some View {
@@ -28,14 +30,17 @@ struct DiaryView: View {
                 }
                 
                 Section(header: Text("오늘의 감정")) {
-                    Picker("감정 선택", selection: $emotional) {
-                        ForEach(emotions, id: \.self) { emotion in
-                            Text(emotion)
+                    Picker("감정 선택", selection: $emotionalIndex) {
+                        ForEach(0..<emotions.count, id: \.self) { index in
+                            Text(emotions[index])
                                 .font(Font.system(size: 40))
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
+                    .onChange(of: emotionalIndex) { newValue in emotional = emotions2[newValue]}
+                                       
                 }
+                                
                 
                 Section(header: Text("일기 내용")) {
                     TextEditor(text: $content)
@@ -52,9 +57,10 @@ struct DiaryView: View {
                     Text("취소")
                 },
                 trailing: Button(action: {
-                    postDiary(content: "\(content)", emotional: "So sad", title: "\(title)") { data, response, error in
+                    postDiary(content: "\(content)", emotional: "\(emotional)", title: "\(title)") { data, response, error in
                         if let error = error {
                             print("Error: \(error)")
+                            
                         } else if let data = data, let response = response as? HTTPURLResponse {
                             if 200 ..< 300 ~= response.statusCode {
                                 // 성공적으로 요청이 처리됨
