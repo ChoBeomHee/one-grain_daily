@@ -17,9 +17,10 @@ struct BasketView: View {
                 .font(.title2)
                 .fontWeight(.heavy)
             
-            Image("Rice")
+            Image("rice2")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .frame(height: 300)
             
             Text("\(rice) / 10000")
         }

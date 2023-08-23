@@ -33,8 +33,9 @@ struct ContentView : View {
             Image(systemName: "cup.and.saucer.fill")
             Text("한 달 한 숟")
           }
-          
-        MypageView()
+         
+        //UserInfoView()
+        MypageView()        
           .tabItem {
             Image(systemName: "person")
             Text("My page") //환경설정

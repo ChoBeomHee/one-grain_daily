@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@main
+	@main
 struct one_grain_dailyApp: App {
     @StateObject var userModel = UserModel()
     
@@ -18,3 +18,4 @@ struct one_grain_dailyApp: App {
         }
     }
 }
+

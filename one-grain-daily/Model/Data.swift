@@ -30,8 +30,8 @@ struct Member: Codable, Identifiable {
 
 // MARK: - UserInfo //GetUserInfo 시 사용
 struct UserInfo: Codable {
-    let currentGrainNum, donationGrainNum: Int
-    let nickname, username: String
+    var currentGrainNum, donationGrainNum: Int
+    var nickname, username: String
 
     enum CodingKeys: String, CodingKey {
         case currentGrainNum = "current_grain_num"

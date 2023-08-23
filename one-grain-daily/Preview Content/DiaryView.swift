@@ -16,7 +16,8 @@ struct DiaryView: View {
     @State private var alertMessage: String = ""
     
     // 이모티콘 목록
-    let emotions = ["😄", "😢", "😡", "😍", "😴"]
+    let emotions = ["😄", "😢", "😡", "😷","🥱", "😴"]
+    //happy, sad, angry, sick, tired, sleepy
     
     var body: some View {
         NavigationView {
@@ -50,8 +51,21 @@ struct DiaryView: View {
                     Text("취소")
                 },
                 trailing: Button(action: {
-                    // 일기 저장 또는 다른 작업을 수행할 수 있음
-                    diaryPost()
+                    postDiary(content: "일기 내용", emotional: "So sad", title: "일기 제목") { data, response, error in
+                        if let error = error {
+                            print("Error: \(error)")
+                        } else if let data = data, let response = response as? HTTPURLResponse {
+                            if 200 ..< 300 ~= response.statusCode {
+                                // 성공적으로 요청이 처리됨
+                                print("일기가 성공적으로 게시되었습니다.")
+                                showAlert = true //일기가 저장되었다는 알림을 띄워주기 위한 변수
+                            } else {
+                                // 요청이 실패했을 때
+                                print("HTTP Status Code: \(response.statusCode)")
+                            }
+                        }
+                    }
+
                 }) {
                     Text("저장")
                 }
@@ -85,6 +99,44 @@ struct DiaryView: View {
                     "title" :title
             ]
         }
+    
+    func postDiary(content: String, emotional: String, title: String, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        let urlString = "http://115.85.183.243:8080/api/v1/user/diaryPosting"
+        
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL")
+            return
+        }
+        
+        // POST 요청 설정
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        // 요청 바디 데이터 설정
+        let postData = """
+            {
+                "content": "\(content)",
+                "emotional": "\(emotional)",
+                "title": "\(title)"
+            }
+        """.data(using: .utf8)
+        
+        request.httpBody = postData
+        
+        // HTTP 요청 헤더 설정
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        //userModel.token
+        request.addValue("Bearer \(userModel.token)", forHTTPHeaderField: "Authorization")
+            
+        
+        // URLSession을 사용하여 요청 보내기
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            completion(data, response, error)
+        }
+        
+        task.resume()
+    }
+
     
     func diaryPost() {
         
@@ -122,7 +174,7 @@ struct DiaryView: View {
                     
                 ]
 
-        let url = "http://115.85.183.243:8080/v1​/user​/diaryPosting"
+        let url = "http://115.85.183.243:8080/api/v1​/user​/diaryPosting"
         
         
         let header: HTTPHeaders = ["Content-Type": "application/json",

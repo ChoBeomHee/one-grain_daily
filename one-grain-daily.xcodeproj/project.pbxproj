@@ -30,6 +30,8 @@
 		99F00B2F2A9469F400238B50 /* DiaryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B2E2A9469F400238B50 /* DiaryButtonView.swift */; };
 		99F00B312A9476E300238B50 /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B302A9476E300238B50 /* Monthly.swift */; };
 		99F00B332A9478C500238B50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B322A9478C400238B50 /* User.swift */; };
+		99F00B352A94940000238B50 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B342A94940000238B50 /* TestView.swift */; };
+		99F00B372A94951C00238B50 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F00B362A94951C00238B50 /* UserInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		99F00B2E2A9469F400238B50 /* DiaryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryButtonView.swift; sourceTree = "<group>"; };
 		99F00B302A9476E300238B50 /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		99F00B322A9478C400238B50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		99F00B342A94940000238B50 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		99F00B362A94951C00238B50 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		B1A334A86AB6CBC3F8FFD41B /* Pods-one-grain-daily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-one-grain-daily.release.xcconfig"; path = "Target Support Files/Pods-one-grain-daily/Pods-one-grain-daily.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +164,7 @@
 		99A57F512A8F87AE00BECC0B /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				99F00B342A94940000238B50 /* TestView.swift */,
 				99A57FBB2A925E2100BECC0B /* MonthlyView.swift */,
 				99A57F7D2A91D98900BECC0B /* LoginView.swift */,
 				99A57F4D2A8F87AD00BECC0B /* ContentView.swift */,
@@ -169,6 +174,7 @@
 				99A57F792A91D72F00BECC0B /* BasketView.swift */,
 				99A57F7F2A91D9C300BECC0B /* SignUpView.swift */,
 				99A57F812A91DFFD00BECC0B /* MypageView.swift */,
+				99F00B362A94951C00238B50 /* UserInfoView.swift */,
 				99A57F522A8F87AE00BECC0B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -384,6 +390,7 @@
 				99F00B312A9476E300238B50 /* Monthly.swift in Sources */,
 				99F00B292A93279900238B50 /* Diary.swift in Sources */,
 				99A57F7A2A91D72F00BECC0B /* BasketView.swift in Sources */,
+				99F00B352A94940000238B50 /* TestView.swift in Sources */,
 				99A57FBC2A925E2200BECC0B /* MonthlyView.swift in Sources */,
 				99F00B332A9478C500238B50 /* User.swift in Sources */,
 				99A57F762A8F8D1E00BECC0B /* CalanderView.swift in Sources */,
@@ -394,6 +401,7 @@
 				99A57F782A91D56A00BECC0B /* DiaryView.swift in Sources */,
 				99F00B232A930E5A00238B50 /* CardView.swift in Sources */,
 				99F00B2F2A9469F400238B50 /* DiaryButtonView.swift in Sources */,
+				99F00B372A94951C00238B50 /* UserInfoView.swift in Sources */,
 				99A57F4C2A8F87AD00BECC0B /* one_grain_dailyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
