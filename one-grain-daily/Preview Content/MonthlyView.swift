@@ -10,6 +10,7 @@ import Alamofire
 
 struct MonthlyView: View {
     @EnvironmentObject var userModel: UserModel
+    
     @State private var month: Int = 8
     @State private var username: String = "주현"
     @State private var rice: String = "흰쌀밥"
@@ -22,19 +23,21 @@ struct MonthlyView: View {
             Text(" 🥄 한 달 한 숟")
                 .font(.title)
                 .fontWeight(.heavy)
-                .padding().frame(height:100)
+                .padding().frame(height:110)
                 .foregroundColor(.black)
             
             Text("\(username)님의 \(month)월은 \(rice)입니다.")
                 .font(.title2)
-                .fontWeight(.heavy)
+                .fontWeight(.bold)
             
             Image("rice2")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 300)
             
-            Text("\(comment)")
+            //Text("\(comment)")
+            
+            CuteCardView(message: comment)
         }
     }
 }
@@ -42,5 +45,32 @@ struct MonthlyView: View {
 struct MonthlyView_Previews: PreviewProvider {
     static var previews: some View {
         MonthlyView()
+    }
+}
+
+
+struct CuteCardView: View {
+    var message: String
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+
+            Text("💌 \(message)")
+                .font(.system(size: 19))
+                .fontWeight(.bold)
+                .padding(23)
+                .foregroundColor(.white)
+                .background(Color.orange)
+                .cornerRadius(15)
+                .shadow(radius: 5)
+        }
+        .padding()
+    }
+}
+
+struct CuteCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        CuteCardView(message: "안녕하세요!")
+            .previewLayout(.sizeThatFits)
     }
 }

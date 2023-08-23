@@ -17,8 +17,8 @@ struct DiaryView: View {
     @State private var alertMessage: String = ""
     
     // 이모티콘 목록
-    let emotions = ["😄", "😢", "😡", "😷","🥱", "😴"]
-    let emotions2 = ["happy", "sad", "angry", "sick", "tired", "sleepy"]
+    let emotions = ["😄", "😢", "😡"]
+    let emotions2 = ["happy", "sad", "angry"]
    
     //happy, sad, angry, sick, tired, sleepy
     
@@ -33,18 +33,18 @@ struct DiaryView: View {
                     Picker("감정 선택", selection: $emotionalIndex) {
                         ForEach(0..<emotions.count, id: \.self) { index in
                             Text(emotions[index])
-                                .font(Font.system(size: 40))
+                                .font(.system(size: 100))
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .onChange(of: emotionalIndex) { newValue in emotional = emotions2[newValue]}
                                        
                 }
-                                
-                
-                Section(header: Text("일기 내용")) {
+
+                Section(header: Text("일기 내용")) {     
+                    
                     TextEditor(text: $content)
-                        .frame(height: 200)
+                        .frame(height: 350)
                 }
                 
             }

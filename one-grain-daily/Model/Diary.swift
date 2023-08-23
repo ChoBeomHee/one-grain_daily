@@ -74,7 +74,8 @@ func deletePosting(id: Int, auth: String, completion: @escaping (Error?) -> Void
 
 
 func diaryDelete(id: Int, auth: String,  completion: @escaping (Error?) -> Void) {
-    let url = "http://115.85.183.243:8080​/api​/v1​/user​/deletePosting​/\(id)"
+    let url = "http://115.85.183.243:8080/api/v1/user/deletePosting/\(id)"
+    
     
     // 헤더 설정
     let headers: HTTPHeaders = [

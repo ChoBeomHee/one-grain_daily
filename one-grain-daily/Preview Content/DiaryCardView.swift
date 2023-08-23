@@ -28,12 +28,7 @@ struct DiaryCardView: View {
                 return "😢"
             case "angry":
                 return "😡"
-            case "sick":
-                return "😷"
-            case "tired":
-                return "🥱"
-            case "sleepy":
-                return "😴"
+    
             default:
                 return "😄" // 기본값
             }
