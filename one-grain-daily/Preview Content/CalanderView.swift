@@ -56,6 +56,16 @@ struct CalendarView: View {
                 Text("기부한 쌀 : \(donate), 보유 쌀: \(have)")
                 Text("\(date)")
             }
+            
+            VStack {
+                Section(header: Text("작성일 : 2023-08-22 ").font(.footnote)) {
+                    let content: String = "오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다."
+
+                    DiaryCardView(title: "오늘의 일기", value: content, iconName: "person")
+
+                
+                }
+            }
 
             
             TextField("메모 추가", text: $memoText)
@@ -77,7 +87,6 @@ struct CalendarView: View {
             
             Task {
                 do {
-                    
                         let (diary, error) = try await withUnsafeThrowingContinuation { continuation in
                             getDiary(date: dateString) { diary, error in
                                 continuation.resume(returning: (diary, error))
@@ -98,7 +107,6 @@ struct CalendarView: View {
             }
     
         }
-        
         
     }
     

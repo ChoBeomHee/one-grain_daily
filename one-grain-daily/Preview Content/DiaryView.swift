@@ -180,27 +180,6 @@ struct DiaryView: View {
         let header: HTTPHeaders = ["Content-Type": "application/json",
                                    "Authorization": String(userModel.token)]
         
-//        let dataRequest = AF.request(url,
-//                                     method: .post,
-//                                     parameters: diaryPost,
-//                                     encoding: JSONEncoding.default,
-//                                     headers: header)
-        
-//        AF.request(url, method: .post,
-//                   parameters: makeParameter(content: self.content, emotional: "self.emotional", title: self.title),
-//                   encoding: JSONEncoding.default,
-//                   headers: header).responseJSON { response in
-//
-//            switch response.result {
-//            case .success:
-//                showAlert(message: "일기 작성이 완료되었습니다.")
-//
-//
-//            case .failure(let error):
-//                showAlert(message: "일기 작성 실패 \(error.localizedDescription)")
-//            }
-//        }
-//
         
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
                     .responseJSON { response in
