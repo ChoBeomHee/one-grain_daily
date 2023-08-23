@@ -29,7 +29,7 @@ struct DiaryView: View {
                     TextField("제목을 입력하세요", text: $title)
                 }
                 
-                Section(header: Text("오늘의 감정")) {
+                Section(header: Text("오늘의 기분")) {
                     Picker("감정 선택", selection: $emotionalIndex) {
                         ForEach(0..<emotions.count, id: \.self) { index in
                             Text(emotions[index])
