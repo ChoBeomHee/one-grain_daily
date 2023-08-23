@@ -10,7 +10,7 @@ import Alamofire
 
 struct CalendarView: View {
     @EnvironmentObject var userModel: UserModel
-    @State private var diary: Diary? // Diary 모델을 저장할 상태 변수
+    //@State private var diary: Diary? // Diary 모델을 저장할 상태 변수
     
     //서버에서 받아올 일기내용
     @State private var content: String = ""
@@ -58,48 +58,63 @@ struct CalendarView: View {
                 
                 VStack{
                     Text("기부한 쌀 : \(donate), 보유 쌀: \(have)")
+                    
                 }
                 
                 VStack(spacing: 20) {
-                    //서버에서 받아온 내용을 표시하도록 바꿔야됨.
-                    let content: String = "오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다.오늘은 프론트엔드 개발을 했다.재밌었다."
-
-                    DiaryCardView(title: "오늘의 일기", content: content, iconName: "person", date: dateString)
-
+                    
+                    if content.isEmpty || emotion_name.isEmpty || title.isEmpty {
+                        EmptyView() // 데이터가 없는 경우 EmptyView 표시
+                    } else {
+                        DiaryCardView(title: title, content: content, iconName: emotion_name, date: dateString)
+                    }
                 }.padding(13)
 
+                
                 
     
             }
             .padding(13)
-                .onAppear {
-                    
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd" // 날짜 형식을 지정합니다
-                    dateString = dateFormatter.string(from: date)
+            .onAppear {
                 
-                Task {
-                    do {
-                            let (diary, error) = try await withUnsafeThrowingContinuation { continuation in
-                                getDiary(date: dateString) { diary, error in
-                                    continuation.resume(returning: (diary, error))
-                                }
-                            }
-                            
-                            if let diary = diary {
-            
-                            } else if let error = error {
-                                // Handle error
-                                print("오류: \(error.localizedDescription)")
-                            }
-                        } catch {
-                            // Handle any other error
-                            print("오류: \(error.localizedDescription)")
-                        }
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd" // 날짜 형식을 지정합니다
+                dateString = dateFormatter.string(from: date)
+                
+                getDiary(date: dateString) { (diary, error) in
+                    if let error = error {
+                        // 에러 처리
+                        print("에러 발생: \(error.localizedDescription)")
+                    } else {
+                        // 일기 정보 처리
+                        // ...
+                    }
                 }
+            
+            }
+                
+//                Task {
+//                    do {
+//                            let (diary, error) = try await withUnsafeThrowingContinuation { continuation in
+//                                getDiary(date: dateString) { diary, error in
+//                                    continuation.resume(returning: (diary, error))
+//                                }
+//                            }
+//
+//                            if let diary = diary {
+//
+//                            } else if let error = error {
+//                                // Handle error
+//                                print("오류: \(error.localizedDescription)")
+//                            }
+//                        } catch {
+//                            // Handle any other error
+//                            print("오류: \(error.localizedDescription)")
+//                        }
+//                }
         
             }
-        }
+       
         
     }
     
@@ -121,12 +136,23 @@ struct CalendarView: View {
                         print(diary.emotion.name)
                         print(diary.title)
                         completion(diary, nil)
+                        
+                        content = diary.content
+                        emotion_name = diary.emotion.name
+                        title = diary.title
+                        
                     } catch {
                         completion(nil, error)
+                        content = ""
+                        emotion_name = ""
+                        title = ""
                     }
                     
                 case .failure(let error):
                     completion(nil, error)
+                    content = ""
+                    emotion_name = ""
+                    title = ""
                 }
             }
     }
