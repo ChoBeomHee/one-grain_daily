@@ -32,11 +32,11 @@
   * 사람들이 공용 바구니에 모은 쌀을 확인할 수 있습니다 ex) 1,470 / 1,500
 
 
-## ✍️ 일기쓰기 
-![일기](https://github.com/one-grain-daily/front-end/assets/56497471/34a3bc95-ff80-41b0-a4dd-5d0e089fdd6d)
 
-## 🥄 한 달 한 숟
-![하루한숟](https://github.com/one-grain-daily/front-end/assets/56497471/96f53358-d8c1-4650-b881-d4872d01b935)
+
+|✍️ 일기쓰기 | 🥄 한 달 한 숟|
+|:------:|:------:|
+|![일기](https://github.com/one-grain-daily/front-end/assets/56497471/34a3bc95-ff80-41b0-a4dd-5d0e089fdd6d)|![하루한숟](https://github.com/one-grain-daily/front-end/assets/56497471/96f53358-d8c1-4650-b881-d4872d01b935)|
 
 
 
