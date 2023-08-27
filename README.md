@@ -33,10 +33,10 @@
 
 
 ## ✍️ 일기쓰기 
-![Alt text](%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%80%E1%85%B5.gif)
+![일기](https://github.com/one-grain-daily/front-end/assets/56497471/34a3bc95-ff80-41b0-a4dd-5d0e089fdd6d)
 
 ## 🥄 한 달 한 숟
-![Alt text](%E1%84%92%E1%85%A1%E1%84%85%E1%85%AE%E1%84%92%E1%85%A1%E1%86%AB%E1%84%89%E1%85%AE%E1%86%AE-1.gif)
+![하루한숟](https://github.com/one-grain-daily/front-end/assets/56497471/96f53358-d8c1-4650-b881-d4872d01b935)
 
 
 
