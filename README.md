@@ -73,5 +73,6 @@
 
 ## 🗓️ 개발 기간
 2023.7.29 ~2023.8.25<br><br>
-![Alt text](image-5.png)
+<img width="700" src="image-5.png"/>
+
 
